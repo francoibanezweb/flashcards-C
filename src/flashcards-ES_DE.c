@@ -1,7 +1,7 @@
 /***************
 | Ap.06, Ej.13 |
 ***************/
-                        /* Programa de preguntas Español-Alemán */
+/* Programa de preguntas Español-Alemán */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -13,9 +13,9 @@
 const char FOREIGN[] = "Alemán";
 
 struct flshcard
-{                     /* Estructura en la que se almacenan los datos de las */
-  char Spanish[32];   /* preguntas */
-  char FOREIGN[32]; 
+{                   /* Estructura en la que se almacenan los datos de las */
+  char Spanish[32]; /* preguntas */
+  char FOREIGN[32];
   char spchPart;
   int errorFlg;
 } spGe[MAXWORDS];
@@ -26,7 +26,7 @@ void initlze();
 void testword(char lang1[], char lang2[], char pos);
 void clearBuffer();
 
-int main()            /* menú principal */
+int main() /* menú principal */
 {
   setlocale(LC_ALL, "C.UTF-8");
 
@@ -36,18 +36,18 @@ int main()            /* menú principal */
   initlze();
   retstFlg = 0;
 
-  while (1 == 1)      /* presentación en pantalla de menú */
+  while (1 == 1) /* presentación en pantalla de menú */
   {
     printf("\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
-    printf("\n\n\t\t1 - Español a %s, nombres",FOREIGN);
-    printf("\n\n\t\t2 - Español a %s, verbos",FOREIGN);
-    printf("\n\n\t\t3 - Español a %s, otros",FOREIGN);
-    printf("\n\n\t\t4 - Español a %s, todo",FOREIGN);
-    printf("\n\n\t\t5 - %s a Español, nombres",FOREIGN);
-    printf("\n\n\t\t6 - %s a Español, verbos",FOREIGN);
-    printf("\n\n\t\t7 - %s a Español, otros",FOREIGN);
-    printf("\n\n\t\t8 - %s a Español, todo",FOREIGN);
+    printf("\n\n\t\t1 - Español a %s, nombres", FOREIGN);
+    printf("\n\n\t\t2 - Español a %s, verbos", FOREIGN);
+    printf("\n\n\t\t3 - Español a %s, otros", FOREIGN);
+    printf("\n\n\t\t4 - Español a %s, todo", FOREIGN);
+    printf("\n\n\t\t5 - %s a Español, nombres", FOREIGN);
+    printf("\n\n\t\t6 - %s a Español, verbos", FOREIGN);
+    printf("\n\n\t\t7 - %s a Español, otros", FOREIGN);
+    printf("\n\n\t\t8 - %s a Español, todo", FOREIGN);
 
     if (retstFlg == 1)
     {
@@ -65,8 +65,8 @@ int main()            /* menú principal */
 
     fgets(ch, sizeof(ch), stdin);
     ch[strcspn(ch, "\n")] = '\0';
-    clearBuffer(); /* captura la decisión del usuario y actualiza los parámetros apropiadamente */
-
+    clearBuffer();
+    // captura la decisión del usuario y actualiza los parámetros apropiadamente
     if (ch[0] == '1' || ch[0] == '2' || ch[0] == '3' || ch[0] == '4')
     {
       strcpy(toAsk, "Español");
@@ -111,11 +111,11 @@ int main()            /* menú principal */
   return 0;
 }
 
-void initlze()        /* lectura de una lista de palabras de disco */
+void initlze() /* lectura de una lista de palabras de disco */
 {
   FILE *filePtr;
 
-  if ((filePtr = fopen("./descripcion-de-personas.txt",
+  if ((filePtr = fopen("../assets/german/descripcion-de-personas.txt",
                        "r")) == NULL)
   {
     printf("Error de Disco: no puede abrirse\n");
@@ -146,7 +146,7 @@ void initlze()        /* lectura de una lista de palabras de disco */
       if (entrCntr >= MAXWORDS)
       {
         printf("ERROR: lista de palabras, demasiado larga.\n");
-        printf("El programa solo utilizará, %d palabras.",MAXWORDS);
+        printf("El programa solo utilizará, %d palabras.", MAXWORDS);
         printf("\n\tSi desea utilizar, todas las palabras");
         printf("\n\talmacenadas en el fichero, deberá modificar ");
         printf("\n\tpreviamente el programa.");
@@ -164,15 +164,15 @@ void initlze()        /* lectura de una lista de palabras de disco */
 }
 
 void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
-{                                                  /* utilizando parámetros */
-  int wrdCntr, ltrCntr;                            /* a los que se les han */
-  char answer[16];                              /* asignado valores en main() */
+{                                                   /* utilizando parámetros */
+  int wrdCntr, ltrCntr;                             /* a los que se les han */
+  char answer[16];                                  // asignado valores en main()
   char yorn[2];
   int retestFlg;
 
   wrdCntr = 0;
   if (pos != 'R') /* si no se van a repetir las preguntas erróneas, poner a 0 */
-  {              /* las banderas de error para poder anotar los nuevos errores*/
+  {               /* las banderas de error para poder anotar los nuevos errores*/
     while (wrdCntr < MAXWORDS)
     {
       spGe[wrdCntr].errorFlg = 0;
@@ -193,34 +193,49 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
       continue;
     }
     printf("\n\n\n\n\n\n\n");
-    printf("\t\t   Traducción de %s a %s", lang1, lang2);
-    printf("\n\n\t\t\t    preguntas de ");
+    printf("\t\t   \033[4mTraducción del %s al %s\033[0m", lang1, lang2);
+    printf("\n\n\t\t\t    \033[4mpreguntas sobre \033[0m");
     if (pos == 'N')
     { /* presentación en pantalla */
-      printf("nombres");
+      printf("\033[4mnombres\033[0m");
     }
     else if (pos == 'V')
     {
-      printf("verbos");
+      printf("\033[4mverbos\033[0m");
     }
     else if (pos == 'O')
     {
-      printf("otros elementos gramaticales");
+      printf("\033[4motros elementos gramaticales\033[0m");
     }
     else if (pos == 'A')
     {
-      printf("todo tipo de elementos gramaticales");
+      printf("\033[4mtodo tipo de elementos gramaticales\033[0m");
     }
     if (lang1[0] == 'A')
     {
       printf("\n\n\n\n\n\n\n\n\n");
-      printf("\t\t\t\t%s", spGe[wrdCntr].FOREIGN);
+      if (strncmp(spGe[wrdCntr].FOREIGN, "der", 3) == 0)
+      {
+        printf("\t\t\t\t\033[1;38;5;39m%s\033[0m\n", spGe[wrdCntr].FOREIGN);
+      }
+      else if (strncmp(spGe[wrdCntr].FOREIGN, "die", 3) == 0)
+      {
+        printf("\t\t\t\t\033[1;38;5;204m%s\033[0m\n", spGe[wrdCntr].FOREIGN);
+      }
+      else if (strncmp(spGe[wrdCntr].FOREIGN, "das", 3) == 0)
+      {
+        printf("\t\t\t\t\033[1;38;5;46m%s\033[0m\n", spGe[wrdCntr].FOREIGN);
+      }
+      else
+      {
+        printf("\033[1m\t\t\t\t%s\033[0m", spGe[wrdCntr].FOREIGN);
+      }
       printf("\n\n\n\n\n\n\n\n");
-      printf("¿Cuál es la traducción al Español? (doble Enter) > ");
+      printf("¿Cuál es la traducción al Español? \033[1;93m(Doble Enter)\033[0m > ");
 
       fgets(answer, sizeof(answer), stdin); /* Obtención de la respuesta del  */
       answer[strcspn(answer, "\n")] = '\0'; /* usuario, paso a mayúsculas */
-      clearBuffer(); 
+      clearBuffer();
 
       ltrCntr = 0;
       while (answer[ltrCntr] != '\0')
@@ -229,10 +244,10 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
         ltrCntr = ltrCntr + 1;
       }
 
-      if (strcmp(answer, spGe[wrdCntr].Spanish) == 0)
-      {                                            
-        printf("\n\nFelicitaciones. Respuesta correcta.");
-        printf("\n¿Desea intentarlo de nuevo? (S/N) > ");
+      if (strcasecmp(answer, spGe[wrdCntr].Spanish) == 0)
+      {
+        printf("\033[1;32m%s\033[0m", "\n\nFelicitaciones. Respuesta correcta.");
+        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
         fgets(yorn, sizeof(yorn), stdin);
         yorn[strcspn(yorn, "\n")] = '\0';
@@ -243,12 +258,13 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
           return;
         }
       }
-      else   /* mensaje para respuesta correcta o errónea */
+      else /* mensaje para respuesta correcta o errónea */
       {
         spGe[wrdCntr].errorFlg = 1;
         retstFlg = 1;
-        printf("\n\tLa respuesta correcta es %s.", spGe[wrdCntr].Spanish);
-        printf("\n¿Desea intentarlo de nuevo? (S/N) > ");
+        printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
+               spGe[wrdCntr].Spanish);
+        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
         fgets(yorn, sizeof(yorn), stdin);
         yorn[strcspn(yorn, "\n")] = '\0';
@@ -264,9 +280,10 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
     else /* Español-Alemán */
     {
       printf("\n\n\n\n\n\n\n\n\n");
-      printf("\t\t\t\t%s", spGe[wrdCntr].Spanish);
+      printf("\t\t\t\t\033[48;5;208;38;5;15m%s\033[0m", spGe[wrdCntr].Spanish);
       printf("\n\n\n\n\n\n\n\n");
-      printf("¿Cuál es la traducción al %s? (doble Enter) > ",FOREIGN);
+      printf("¿Cuál es la traducción al %s? \033[1;93m(Doble Enter)\033[0m > ",
+             FOREIGN);
 
       fgets(answer, sizeof(answer), stdin);
       answer[strcspn(answer, "\n")] = '\0';
@@ -281,8 +298,8 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
 
       if (strcmp(answer, spGe[wrdCntr].FOREIGN) == 0)
       {
-        printf("\n\nFelicitaciones. Respuesta correcta.");
-        printf("\n¿Desea intentarlo de nuevo? (S/N) > ");
+        printf("\033[1;32m%s\033[0m", "\n\nFelicitaciones. Respuesta correcta.");
+        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
         fgets(yorn, sizeof(yorn), stdin);
         yorn[strcspn(yorn, "\n")] = '\0';
@@ -297,8 +314,9 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
       {
         spGe[wrdCntr].errorFlg = 1;
         retstFlg = 1;
-        printf("\n\nLa respuesta correcta es %s.", spGe[wrdCntr].FOREIGN);
-        printf("\n¿Desea intentarlo de nuevo? (S/N) > ");
+        printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
+               spGe[wrdCntr].FOREIGN);
+        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
         fgets(yorn, sizeof(yorn), stdin);
         yorn[strcspn(yorn, "\n")] = '\0';
