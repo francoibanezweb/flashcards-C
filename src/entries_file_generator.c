@@ -1,3 +1,4 @@
+
 /***************
 | Ap.06, Ej.12 |
 ***************/
@@ -13,8 +14,8 @@ int main()
   /* FINAL VERSION */
 
   FILE *filePtr;
-  char Espanol[16];
-  char Aleman[16];
+  char Espanol[32];
+  char Aleman[32];
   char spPrt[2];
 
   char again[2], confirm[2];

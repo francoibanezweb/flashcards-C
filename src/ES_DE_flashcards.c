@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <locale.h>
 
 #define MAXWORDS 100
 
@@ -13,8 +14,8 @@ const char FOREIGN[] = "Alemán";
 
 struct flshcard
 {                     /* Estructura en la que se almacenan los datos de las */
-  char Spanish[16];   /* preguntas */
-  char FOREIGN[16]; 
+  char Spanish[32];   /* preguntas */
+  char FOREIGN[32]; 
   char spchPart;
   int errorFlg;
 } spGe[MAXWORDS];
@@ -27,6 +28,8 @@ void clearBuffer();
 
 int main()            /* menú principal */
 {
+  setlocale(LC_ALL, "C.UTF-8");
+
   char ch[2];
   char toAsk[9], toAnswer[9], whchWrds;
 
@@ -62,7 +65,7 @@ int main()            /* menú principal */
 
     fgets(ch, sizeof(ch), stdin);
     ch[strcspn(ch, "\n")] = '\0';
-    clearBuffer(); /* get user's choice and set parameters accordingly */
+    clearBuffer(); /* captura la decisión del usuario y actualiza los parámetros apropiadamente */
 
     if (ch[0] == '1' || ch[0] == '2' || ch[0] == '3' || ch[0] == '4')
     {
@@ -112,7 +115,7 @@ void initlze()        /* lectura de una lista de palabras de disco */
 {
   FILE *filePtr;
 
-  if ((filePtr = fopen("/home/franco/programacion/aprendoC/build/wordlist.txt",
+  if ((filePtr = fopen("./descripcion-de-personas.txt",
                        "r")) == NULL)
   {
     printf("Error de Disco: no puede abrirse\n");
@@ -125,8 +128,8 @@ void initlze()        /* lectura de una lista de palabras de disco */
 
   while (fgets(line, sizeof(line), filePtr) != NULL)
   {
-    char Spanish[16];
-    char German[16];
+    char Spanish[32];
+    char German[32];
     char spchPart;
 
     if (sscanf(line, "%s %s %c", Spanish, German, &spchPart) == 3)
