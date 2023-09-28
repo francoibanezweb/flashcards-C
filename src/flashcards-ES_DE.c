@@ -1,14 +1,13 @@
-/***************
-| Ap.06, Ej.13 |
-***************/
 /* Programa de preguntas Español-Alemán */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <locale.h>
+#include "files-names.h"
 
-#define MAXWORDS 100
+#define MAXWORDS 200
+#define TOTAL_TEMAS 66
 
 const char FOREIGN[] = "Alemán";
 
@@ -22,7 +21,7 @@ struct flshcard
 
 int retstFlg;
 
-void initlze();
+void initlze(int *foreingChoice);
 void testword(char lang1[], char lang2[], char pos);
 void clearBuffer();
 
@@ -32,86 +31,177 @@ int main() /* menú principal */
 
   char ch[2];
   char toAsk[9], toAnswer[9], whchWrds;
+  int keepGuessing;
+  int foreignToTest;
+  int themeToTrain;
 
-  initlze();
   retstFlg = 0;
 
-  while (1 == 1) /* presentación en pantalla de menú */
+  keepGuessing = -1;
+
+  while (keepGuessing != 0)
   {
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n");
+    system("clear");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
-    printf("\n\n\t\t1 - Español a %s, nombres", FOREIGN);
-    printf("\n\n\t\t2 - Español a %s, verbos", FOREIGN);
-    printf("\n\n\t\t3 - Español a %s, otros", FOREIGN);
-    printf("\n\n\t\t4 - Español a %s, todo", FOREIGN);
-    printf("\n\n\t\t5 - %s a Español, nombres", FOREIGN);
-    printf("\n\n\t\t6 - %s a Español, verbos", FOREIGN);
-    printf("\n\n\t\t7 - %s a Español, otros", FOREIGN);
-    printf("\n\n\t\t8 - %s a Español, todo", FOREIGN);
+    printf("¿Qué idioma desea practicar? > ");
+    printf("\n\n\t\t1 - Inglés");
+    printf("\n\n\t\t2 - Alemán");
+    printf("\n\n\t\t0 - Salir");
+    printf("\n\n\t\tSeleccione una opción > ");
 
-    if (retstFlg == 1)
-    {
-      printf("\n\n\t\t9 - Repetir errores de la última prueba");
-    }
+    scanf("%d", &keepGuessing);
 
-    printf("\n\n\t\t0 - Salir del Programa");
+    if (keepGuessing == 1 || keepGuessing == 2)
+    {
+      int startIndex = 0;
+      int endIndex = 6; // Mostrar los primeros 6 temas
 
-    if (retstFlg != 1)
-    {
-      printf("\n\n");
-    }
+      while (startIndex < TOTAL_TEMAS)
+      {
+        system("clear");
+        printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
+        printf("\nLos distintos temas a practicar:\n");
 
-    printf("\n\n\t\t\t¿Qué opción desea? > ");
+        for (int i = startIndex; i < endIndex && i < TOTAL_TEMAS; i++)
+        {
+          char truncatedFileName[256]; // Ajusta el tamaño según tus necesidades
+          strncpy(truncatedFileName, files_names[i], strlen(files_names[i]) - 4);
+          truncatedFileName[strlen(files_names[i]) - 4] = '\0';
 
-    fgets(ch, sizeof(ch), stdin);
-    ch[strcspn(ch, "\n")] = '\0';
-    clearBuffer();
-    // captura la decisión del usuario y actualiza los parámetros apropiadamente
-    if (ch[0] == '1' || ch[0] == '2' || ch[0] == '3' || ch[0] == '4')
-    {
-      strcpy(toAsk, "Español");
-      strcpy(toAnswer, FOREIGN);
+          // Reemplazar '-' por ' ' en la cadena
+          for (int j = 0; truncatedFileName[j]; j++)
+          {
+            if (truncatedFileName[j] == '-')
+            {
+              truncatedFileName[j] = ' ';
+            }
+          }
+
+          // Capitalizar la primera letra
+          if (truncatedFileName[3])
+          {
+            truncatedFileName[3] = toupper(truncatedFileName[3]);
+          }
+
+          printf("\n\n\t\t%d - %s\n", i + 1, truncatedFileName + 3);
+        }
+
+        printf("\n\nSeleccione un archivo (1-%d) o ingrese 0 para mostrar los siguientes 6 temas: ", TOTAL_TEMAS);
+
+        int selectedFile;
+        scanf("%d", &selectedFile);
+
+        if (selectedFile == 0)
+        {
+          // Mostrar los siguientes 6 temas
+          startIndex = endIndex;
+          endIndex += 6;
+        }
+        else if (selectedFile >= 1 && selectedFile <= TOTAL_TEMAS)
+        {
+          // Aquí puedes realizar acciones con el archivo seleccionado,
+          // por ejemplo, abrirlo o realizar alguna operación.
+          printf("Seleccionaste el archivo %d - %s\n", selectedFile, files_names[selectedFile - 1]);
+        }
+        else
+        {
+          printf("Opción no válida. Por favor, seleccione un número válido.\n");
+        }
+      }
     }
-    if (ch[0] == '5' || ch[0] == '6' || ch[0] == '7' || ch[0] == '8')
-    {
-      strcpy(toAsk, FOREIGN);
-      strcpy(toAnswer, "Español");
-    }
-    if (ch[0] == '1' || ch[0] == '5')
-    {
-      whchWrds = 'N';
-    }
-    else if (ch[0] == '2' || ch[0] == '6')
-    {
-      whchWrds = 'V';
-    }
-    else if (ch[0] == '3' || ch[0] == '7')
-    {
-      whchWrds = 'O';
-    }
-    else if (ch[0] == '4' || ch[0] == '8')
-    {
-      whchWrds = 'A';
-    }
-    else if (ch[0] == '9' && retstFlg == 1)
-    {
-      whchWrds = 'R';
-    }
-    else if (ch[0] == '0')
-    {
-      break;
-    }
-    else
-    {
-      putchar(7);
-      continue;
-    }
-    testword(toAsk, toAnswer, whchWrds);
   }
-  return 0;
 }
 
-void initlze() /* lectura de una lista de palabras de disco */
+// while (keepGuessing != 0)
+// {
+//   if (keepGuessing == 1)
+//   {
+//     initlze(&keepGuessing);
+//   }
+//   if (keepGuessing == 2)
+//   {
+//     initlze(&keepGuessing);
+//   }
+// }
+
+// while ((keepGuessing != 0) && (keepGuessing == 1 || keepGuessing == 2))
+// /* presentación en pantalla de menú */
+// {
+
+//   printf("\n\n\n\n\n\n\n\n\n\n\n\n");
+//   printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
+//   printf("\n\n\t\t1 - Español a %s, nombres", FOREIGN);
+//   printf("\n\n\t\t2 - Español a %s, verbos", FOREIGN);
+//   printf("\n\n\t\t3 - Español a %s, otros", FOREIGN);
+//   printf("\n\n\t\t4 - Español a %s, todo", FOREIGN);
+//   printf("\n\n\t\t5 - %s a Español, nombres", FOREIGN);
+//   printf("\n\n\t\t6 - %s a Español, verbos", FOREIGN);
+//   printf("\n\n\t\t7 - %s a Español, otros", FOREIGN);
+//   printf("\n\n\t\t8 - %s a Español, todo", FOREIGN);
+
+//   if (retstFlg == 1)
+//   {
+//     printf("\n\n\t\t9 - Repetir errores de la última prueba");
+//   }
+
+//   printf("\n\n\t\t0 - Salir del Programa");
+
+//   if (retstFlg != 1)
+//   {
+//     printf("\n\n");
+//   }
+
+//   printf("\n\n\t\t\t¿Qué opción desea? > ");
+
+//   fgets(ch, sizeof(ch), stdin);
+//   ch[strcspn(ch, "\n")] = '\0';
+//   clearBuffer();
+//   // captura la decisión del usuario y actualiza los parámetros apropiadamente
+//   if (ch[0] == '1' || ch[0] == '2' || ch[0] == '3' || ch[0] == '4')
+//   {
+//     strcpy(toAsk, "Español");
+//     strcpy(toAnswer, FOREIGN);
+//   }
+//   if (ch[0] == '5' || ch[0] == '6' || ch[0] == '7' || ch[0] == '8')
+//   {
+//     strcpy(toAsk, FOREIGN);
+//     strcpy(toAnswer, "Español");
+//   }
+//   if (ch[0] == '1' || ch[0] == '5')
+//   {
+//     whchWrds = 'N';
+//   }
+//   else if (ch[0] == '2' || ch[0] == '6')
+//   {
+//     whchWrds = 'V';
+//   }
+//   else if (ch[0] == '3' || ch[0] == '7')
+//   {
+//     whchWrds = 'O';
+//   }
+//   else if (ch[0] == '4' || ch[0] == '8')
+//   {
+//     whchWrds = 'A';
+//   }
+//   else if (ch[0] == '9' && retstFlg == 1)
+//   {
+//     whchWrds = 'R';
+//   }
+//   else if (ch[0] == '0')
+//   {
+//     break;
+//   }
+//   else
+//   {
+//     putchar(7);
+//     continue;
+//   }
+//   testword(toAsk, toAnswer, whchWrds);
+// }
+
+void initlze(int *foreingChoice) /* lectura de una lista de palabras de disco */
 {
   FILE *filePtr;
 
