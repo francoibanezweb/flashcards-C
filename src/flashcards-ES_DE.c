@@ -142,50 +142,6 @@ int main() /* menú principal */
           fgets(ch, sizeof(ch), stdin);
           ch[strcspn(ch, "\n")] = '\0';
           clearBuffer();
-          // captura la decisión del usuario y actualiza los parámetros apropiadamente
-          // if (ch[0] == '1' || ch[0] == '2' || ch[0] == '3' || ch[0] == '4' || ch[0] == '5')
-          // {
-          //   strcpy(toAsk, "Español");
-          //   strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
-          // }
-          // if (ch[0] == '6' || ch[0] == '7' || ch[0] == '8' || ch[0] == '9' || ch[0] == '10')
-          // {
-          //   strcpy(toAsk, FOREIGN[keepGuessing - 1]);
-          //   strcpy(toAnswer, "Español");
-          // }
-          // if (ch[0] == '1' || ch[0] == '6')
-          // {
-          //   whchWrds = 'S';
-          // }
-          // else if (ch[0] == '2' || ch[0] == '7')
-          // {
-          //   whchWrds = 'V';
-          // }
-          // else if (ch[0] == '3' || ch[0] == '8')
-          // {
-          //   whchWrds = 'A';
-          // }
-          // else if (ch[0] == '4' || ch[0] == '9')
-          // {
-          //   whchWrds = 'O';
-          // }
-          // else if (ch[0] == '5' || ch[0] == '10')
-          // {
-          //   whchWrds = 'T';
-          // }
-          // else if (ch[0] == '11' && retstFlg == 1)
-          // {
-          //   whchWrds = 'R';
-          // }
-          // else if (ch[0] == '0')
-          // {
-          //   break;
-          // }
-          // else
-          // {
-          //   putchar(7);
-          //   continue;
-          // }
 
 int option = atoi(ch); // Convert the input to an integer
 
