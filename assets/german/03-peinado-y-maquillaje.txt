@@ -75,7 +75,6 @@ perfume  N
 agua_de_colonia  N
 desodorante  N
 spray_desodorante  N
-afeitado  O
 afeitado  N
 depilación  N
 barba  N
