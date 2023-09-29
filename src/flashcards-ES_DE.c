@@ -26,7 +26,7 @@ struct flshcard
 int retstFlg;
 
 void initlze(int lang, int file, const char files_names[]);
-void testword(char lang1[], char lang2[], char pos);
+void testword(char lang1[], char lang2[], char pos, char theme[]);
 void clearBuffer();
 
 int main() /* menú principal */
@@ -181,7 +181,24 @@ int main() /* menú principal */
             continue;
           }
 
-          testword(toAsk, toAnswer, whchWrds);
+          char theme[256];
+          // Reemplazar '-' por ' ' en la cadena
+          for (int j = 0; theme[j]; j++)
+          {
+            if (theme[j] == '-')
+            {
+              theme[j] = ' ';
+            }
+          }
+
+          // Capitalizar la primera letra
+          if (theme[3])
+          {
+            theme[3] = toupper(theme[3]);
+          }
+
+          system("clear");
+          testword(toAsk, toAnswer, whchWrds, theme);
         }
         else
         {
@@ -253,7 +270,8 @@ void initlze(int lang, int file, const char files_names[]) /* lectura de una lis
   fclose(filePtr);
 }
 
-void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
+void testword(char lang1[], char lang2[], char pos, char theme[])
+                                                    /* preguntas al usuario */
 {                                                   /* utilizando parámetros */
   int wrdCntr, ltrCntr;                             /* a los que se les han */
   char answer[16];                                  // asignado valores en main()
@@ -284,7 +302,8 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
       continue;
     }
     printf("\n\n\n\n\n\n\n");
-    printf("\t\t   \033[4mTraducción del %s al %s\033[0m", lang1, lang2);
+    printf("\t\t   \033[4mTraducción del %s al %s\033[0m\n", lang1, lang2);
+    printf("\t\t   \033[4m%s\033[0m\n", theme + 3);
     printf("\n\n\t\t\t    \033[4mpreguntas sobre \033[0m");
     if (pos == 'N')
     { /* presentación en pantalla */
