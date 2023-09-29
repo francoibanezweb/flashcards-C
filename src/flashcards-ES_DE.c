@@ -45,7 +45,7 @@ int main() /* menú principal */
   {
     system("clear");
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
+    printf("\n\t\tPreguntas sobre Vocabulario =2023= @francoibanezweb\n\n");
     printf("¿Qué idioma desea practicar? > ");
     printf("\n\n\t\t1 - Inglés");
     printf("\n\n\t\t2 - Alemán");
@@ -63,7 +63,7 @@ int main() /* menú principal */
       {
         system("clear");
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
+        printf("\n\t\tPreguntas sobre Vocabulario =2023= @francoibanezweb\n\n");
         printf("\nLos distintos temas a practicar:\n");
 
         for (int i = startIndex; i < endIndex && i < TOTAL_TEMAS; i++)
@@ -114,18 +114,20 @@ int main() /* menú principal */
 
           printf("\n\n\n\n\n\n\n\n\n\n\n\n");
           printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
-          printf("\n\n\t\t1 - Español a %s, nombres", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t1 - Español a %s, sustantivos", FOREIGN[keepGuessing - 1]);
           printf("\n\n\t\t2 - Español a %s, verbos", FOREIGN[keepGuessing - 1]);
-          printf("\n\n\t\t3 - Español a %s, otros", FOREIGN[keepGuessing - 1]);
-          printf("\n\n\t\t4 - Español a %s, todo", FOREIGN[keepGuessing - 1]);
-          printf("\n\n\t\t5 - %s a Español, nombres", FOREIGN[keepGuessing - 1]);
-          printf("\n\n\t\t6 - %s a Español, verbos", FOREIGN[keepGuessing - 1]);
-          printf("\n\n\t\t7 - %s a Español, otros", FOREIGN[keepGuessing - 1]);
-          printf("\n\n\t\t8 - %s a Español, todo", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t3 - Español a %s, adjetivos", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t4 - Español a %s, otros", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t5 - Español a %s, todo", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t6 - %s a Español, sustantivos", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t7 - %s a Español, verbos", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t8 - %s a Español, adjetivos", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t9 - %s a Español, otros", FOREIGN[keepGuessing - 1]);
+          printf("\n\n\t\t10 - %s a Español, todo", FOREIGN[keepGuessing - 1]);
 
           if (retstFlg == 1)
           {
-            printf("\n\n\t\t9 - Repetir errores de la última prueba");
+            printf("\n\n\t\t11 - Repetir errores de la última prueba");
           }
 
           printf("\n\n\t\t0 - Salir del Programa");
@@ -141,45 +143,90 @@ int main() /* menú principal */
           ch[strcspn(ch, "\n")] = '\0';
           clearBuffer();
           // captura la decisión del usuario y actualiza los parámetros apropiadamente
-          if (ch[0] == '1' || ch[0] == '2' || ch[0] == '3' || ch[0] == '4')
-          {
-            strcpy(toAsk, "Español");
-            strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
-          }
-          if (ch[0] == '5' || ch[0] == '6' || ch[0] == '7' || ch[0] == '8')
-          {
-            strcpy(toAsk, FOREIGN[keepGuessing - 1]);
-            strcpy(toAnswer, "Español");
-          }
-          if (ch[0] == '1' || ch[0] == '5')
-          {
-            whchWrds = 'N';
-          }
-          else if (ch[0] == '2' || ch[0] == '6')
-          {
-            whchWrds = 'V';
-          }
-          else if (ch[0] == '3' || ch[0] == '7')
-          {
-            whchWrds = 'O';
-          }
-          else if (ch[0] == '4' || ch[0] == '8')
-          {
-            whchWrds = 'A';
-          }
-          else if (ch[0] == '9' && retstFlg == 1)
-          {
+          // if (ch[0] == '1' || ch[0] == '2' || ch[0] == '3' || ch[0] == '4' || ch[0] == '5')
+          // {
+          //   strcpy(toAsk, "Español");
+          //   strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
+          // }
+          // if (ch[0] == '6' || ch[0] == '7' || ch[0] == '8' || ch[0] == '9' || ch[0] == '10')
+          // {
+          //   strcpy(toAsk, FOREIGN[keepGuessing - 1]);
+          //   strcpy(toAnswer, "Español");
+          // }
+          // if (ch[0] == '1' || ch[0] == '6')
+          // {
+          //   whchWrds = 'S';
+          // }
+          // else if (ch[0] == '2' || ch[0] == '7')
+          // {
+          //   whchWrds = 'V';
+          // }
+          // else if (ch[0] == '3' || ch[0] == '8')
+          // {
+          //   whchWrds = 'A';
+          // }
+          // else if (ch[0] == '4' || ch[0] == '9')
+          // {
+          //   whchWrds = 'O';
+          // }
+          // else if (ch[0] == '5' || ch[0] == '10')
+          // {
+          //   whchWrds = 'T';
+          // }
+          // else if (ch[0] == '11' && retstFlg == 1)
+          // {
+          //   whchWrds = 'R';
+          // }
+          // else if (ch[0] == '0')
+          // {
+          //   break;
+          // }
+          // else
+          // {
+          //   putchar(7);
+          //   continue;
+          // }
+
+int option = atoi(ch); // Convert the input to an integer
+
+switch (option) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        strcpy(toAsk, "Español");
+        strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
+        whchWrds = (option == 1 || option == 6) ? 'S' :
+                   (option == 2 || option == 7) ? 'V' :
+                   (option == 3 || option == 8) ? 'A' :
+                   (option == 4 || option == 9) ? 'O' : 'T';
+        break;
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+        strcpy(toAsk, FOREIGN[keepGuessing - 1]);
+        strcpy(toAnswer, "Español");
+        whchWrds = (option == 6 || option == 1) ? 'S' :
+                   (option == 7 || option == 2) ? 'V' :
+                   (option == 8 || option == 3) ? 'A' :
+                   (option == 9 || option == 4) ? 'O' : 'T';
+        break;
+    case 11:
+        if (retstFlg == 1) {
             whchWrds = 'R';
-          }
-          else if (ch[0] == '0')
-          {
-            break;
-          }
-          else
-          {
-            putchar(7);
-            continue;
-          }
+        }
+        break;
+    case 0:
+        // Handle the case for '0' (Exit) if needed
+        break;
+    default:
+        whchWrds = ' '; // Set a default value or handle other cases
+        break;
+}
+
 
           char theme[256];
           // Reemplazar '-' por ' ' en la cadena
@@ -291,7 +338,7 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
   wrdCntr = 0;
   while (wrdCntr < MAXWORDS)
   {
-    if (pos != 'A' && pos != 'R' && pos != spGe[wrdCntr].spchPart)
+    if (pos != 'T' && pos != 'R' && pos != spGe[wrdCntr].spchPart)
     {
       wrdCntr = wrdCntr + 1;
       continue;
@@ -305,19 +352,23 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
     printf("\t\t   \033[4mTraducción del %s al %s\033[0m\n", lang1, lang2);
     printf("\t\t   \033[4m%s\033[0m\n", theme + 3);
     printf("\n\n\t\t\t    \033[4mpreguntas sobre \033[0m");
-    if (pos == 'N')
+    if (pos == 'S')
     { /* presentación en pantalla */
-      printf("\033[4mnombres\033[0m");
+      printf("\033[4msustantivos\033[0m");
     }
     else if (pos == 'V')
     {
       printf("\033[4mverbos\033[0m");
     }
+    else if (pos == 'A')
+    {
+      printf("\033[4madjetivos\033[0m");
+    }
     else if (pos == 'O')
     {
       printf("\033[4motros elementos gramaticales\033[0m");
     }
-    else if (pos == 'A')
+    else if (pos == 'T')
     {
       printf("\033[4mtodo tipo de elementos gramaticales\033[0m");
     }
