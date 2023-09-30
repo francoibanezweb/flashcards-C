@@ -278,7 +278,7 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
                                                     /* preguntas al usuario */
 {                                                   /* utilizando parámetros */
   int wrdCntr, ltrCntr;                             /* a los que se les han */
-  char answer[16];                                  // asignado valores en main()
+  char answer[64];                                  // asignado valores en main()
   char yorn[2];
   int retestFlg;
 
@@ -346,14 +346,33 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
       }
       else
       {
+        for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
+        if (spGe[wrdCntr].FOREIGN[i] == '_') {
+           spGe[wrdCntr].FOREIGN[i] = ' ';
+        }
+      }
         printf("\033[1m\t\t\t\t%s\033[0m", spGe[wrdCntr].FOREIGN);
       }
       printf("\n\n\n\n\n\n\n\n");
       printf("¿Cuál es la traducción al Español? \033[1;93m(Doble Enter)\033[0m > ");
 
       fgets(answer, sizeof(answer), stdin); /* Obtención de la respuesta del  */
-      answer[strcspn(answer, "\n")] = '\0'; /* usuario, paso a mayúsculas */
+      answer[strcspn(answer, "\n")] = '\0'; /* usuario*/
       clearBuffer();
+
+
+      for (int i = 0; answer[i]; i++) {
+        if (answer[i] == '_') {
+           answer[i] = ' ';
+        }
+      }
+
+      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++) {
+        if (spGe[wrdCntr].Spanish[i] == '_') {
+           spGe[wrdCntr].Spanish[i] = ' ';
+        }
+      }
+
 
       if (strcasecmp(answer, spGe[wrdCntr].Spanish) == 0)
       {
@@ -375,6 +394,7 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
         retstFlg = 1;
         printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
                spGe[wrdCntr].Spanish);
+        printf(answer);
         printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
         fgets(yorn, sizeof(yorn), stdin);
@@ -390,6 +410,13 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
     }
     else /* Español-Alemán */
     {
+
+      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++) {
+        if (spGe[wrdCntr].Spanish[i] == '_') {
+           spGe[wrdCntr].Spanish[i] = ' ';
+        }
+      }
+
       printf("\n\n\n\n\n\n\n\n\n");
       printf("\t\t\t\t\033[48;5;208;38;5;15m%s\033[0m", spGe[wrdCntr].Spanish);
       printf("\n\n\n\n\n\n\n\n");
@@ -399,6 +426,18 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
       fgets(answer, sizeof(answer), stdin);
       answer[strcspn(answer, "\n")] = '\0';
       clearBuffer(); /* obtención de la respuesta del usuario, paso a mayús */
+
+      for (int i = 0; answer[i]; i++) {
+        if (answer[i] == '_') {
+           answer[i] = ' ';
+        }
+      }
+
+       for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
+        if (spGe[wrdCntr].FOREIGN[i] == '_') {
+           spGe[wrdCntr].FOREIGN[i] = ' ';
+        }
+      }
 
       if (strcmp(answer, spGe[wrdCntr].FOREIGN) == 0)
       {
