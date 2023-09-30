@@ -87,7 +87,7 @@ int main() /* menú principal */
             truncatedFileName[3] = toupper(truncatedFileName[3]);
           }
 
-          printf("\n\n\t\t%d - %s\n", i + 1, truncatedFileName + 3);
+          printf("\n\t\t%d - %s\n", i + 1, truncatedFileName + 3);
         }
 
         printf("\n\nSeleccione un archivo (1-%d) o ingrese 0", TOTAL_TEMAS);
@@ -186,7 +186,8 @@ switch (option) {
 
 
           char theme[256];
-          // Reemplazar '-' por ' ' en la cadena
+          strcpy(theme, files_names[selectedFile - 1]);
+          // Reemplazo '-' por ' ' en la cadena
           for (int j = 0; theme[j]; j++)
           {
             if (theme[j] == '-')
@@ -195,13 +196,19 @@ switch (option) {
             }
           }
 
-          // Capitalizar la primera letra
+          // Capitalizo la primera letra
           if (theme[3])
           {
             theme[3] = toupper(theme[3]);
           }
+          // Elimino la extensión .txt
+          size_t length = strlen(theme);
+          if (length >= 4) {
+            theme[length - 4] = '\0';
+          };
 
           system("clear");
+
           testword(toAsk, toAnswer, whchWrds, theme);
         }
         else
