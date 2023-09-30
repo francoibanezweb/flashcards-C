@@ -177,6 +177,7 @@ switch (option) {
         break;
     case 0:
         // Handle the case for '0' (Exit) if needed
+        exit(0);
         break;
     default:
         whchWrds = ' '; // Set a default value or handle other cases
