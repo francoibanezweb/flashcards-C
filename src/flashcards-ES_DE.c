@@ -331,6 +331,13 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
     }
     if (lang1[0] == 'A')
     {
+
+      for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
+        if (spGe[wrdCntr].FOREIGN[i] == '_') {
+           spGe[wrdCntr].FOREIGN[i] = ' ';
+        }
+      }
+
       printf("\n\n\n\n\n\n\n\n\n");
       if (strncmp(spGe[wrdCntr].FOREIGN, "der", 3) == 0)
       {
@@ -346,11 +353,6 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
       }
       else
       {
-        for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
-        if (spGe[wrdCntr].FOREIGN[i] == '_') {
-           spGe[wrdCntr].FOREIGN[i] = ' ';
-        }
-      }
         printf("\033[1m\t\t\t\t%s\033[0m", spGe[wrdCntr].FOREIGN);
       }
       printf("\n\n\n\n\n\n\n\n");
@@ -394,7 +396,6 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
         retstFlg = 1;
         printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
                spGe[wrdCntr].Spanish);
-        printf(answer);
         printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
         fgets(yorn, sizeof(yorn), stdin);
