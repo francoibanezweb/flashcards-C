@@ -1,88 +1,88 @@
-peinar  V
-cepillar  V
-cortar  V
-igualar  V
-hacerse_un_peinado  V
-peinarse(el_pelo)  V
-cepillarse_el_pelo  V
-teñirse_el_pelo  V
-teñirse_de_rubio  V
-hacerse_cortar_el_pelo  V
-ir_a_teñirse  V
-hacerse_secar_el_pelo  V
-mirarse_en_el_espejo  V
-maquillarse  V
-desmaquillarse  V
-perfumarse  V
-pintarse_las_uñas  V
-afeitarse  V
-depilarse  V
-llevar_el_pelo_corto  V
-llevar_el_pelo_largo  V
-llevar_melenita  V
-ser_calvo  V
-tener_el_pelo_rubio  V
-tener_el_pelo_castaño  V
-tener_el_pelo_negro  V
-tener_el_pelo_pelirrojo  V
-tener_el_pelo_gris  V
-tener_el_pelo_entrecano  V
-tener_el_pelo_blanco  V
-ser_rubio  V
-peinado  N
-tener_el_pelo_crespo  V
-tener_el_pelo_rizado  V
-tener_el_pelo_ondulado  V
-tener_el_pelo_liso  V
-tener_el_pelo_espeso  V
-tener_el_pelo_teñido  V
-tener_el_pelo_graso  V
-tener_el_pelo_seco  V
-corte_de_pelo  N
-permanente  N
-rizo  N
-raya  N
-mechas  N
-flequillo  N
-cola_de_caballo  N
-trenza  N
-peine  N
-cepillo_para_el_pelo  N
-pasador_para_el_pelo  N
-horquilla_para_el_pelo  N
-rulo  N
-plancha_para_el_pelo  N
-peluca  N
-champú1  N
-champú2  N
-gel  N
-laca  N
-caspa  N
-belleza  N
-crema_facial  N
-crema_hidratante  N
-mascarilla_facial  N
-polvos(de_tocador)  N
-polvera  N
-maquillaje_de_base  N
-barra_de_labios  N
-rímel  N
-sombra_de_ojos  N
-laca_de_uñas  N
-desmaquillante  N
-quitaesmalte  N
-perfume  N
-agua_de_colonia  N
-desodorante  N
-spray_desodorante  N
-afeitado  N
-depilación  N
-barba  N
-bigote  N
-navaja_de_afeitar  N
-maquinilla_de_afeitar  N
-máquina_de_afeitar  N
-hoja_de_afeitar  N
-brocha_de_afeitar  N
-crema_de_afeitar  N
-loción_para_después_del_afeitado  N
+peinar kämmen V
+cepillar bürsten V
+cortar schneiden V
+igualar Sachschneiden V
+hacerse_un_peinado sich_frisieren V
+peinarse(el_pelo) sich_kämmen V
+cepillarse_el_pelo sich_bürsten V
+teñirse_el_pelo sich_färben V
+teñirse_de_rubio blondieren V
+hacerse_cortar_el_pelo sich_schneiden_lassen V
+ir_a_teñirse sich_färben_lassen V
+hacerse_secar_el_pelo sich_föhnen_lassen V
+mirarse_en_el_espejo sich_im_Spiegel_betrachten V
+maquillarse sich_schminken V
+desmaquillarse sich_abschminken V
+perfumarse sich_parfümieren V
+pintarse_las_uñas sich_die_Fingernägel_lackieren V
+afeitarse sich_rasieren V
+depilarse enthaaren V
+llevar_el_pelo_corto kurze_Haare_haben V
+llevar_el_pelo_largo lange_Haare_haben V
+llevar_melenita mittellange_Haare_haben V
+ser_calvo eine_Glatze_haben V
+tener_el_pelo_rubio blonde_Haare_haben V
+tener_el_pelo_castaño braune_Haare_haben V
+tener_el_pelo_negro schwarze_Haare_haben V
+tener_el_pelo_pelirrojo rote_Haare_haben V
+tener_el_pelo_gris graue_Haare_haben V
+tener_el_pelo_entrecano grau_meliert_Haare_haben V
+tener_el_pelo_blanco weiße_Haare_haben V
+ser_rubio blond_sein V
+peinado die_Frisur_(-en) S
+tener_el_pelo_crespo krauses_Haar_haben V
+tener_el_pelo_rizado lockiges_Haar_haben V
+tener_el_pelo_ondulado gewelltes_Haar_haben V
+tener_el_pelo_liso glattes_Haare_haben V
+tener_el_pelo_espeso dichtes_Haare_haben V
+tener_el_pelo_teñido gefärbtes_Haare_haben V
+tener_el_pelo_graso fettiges_Haare_haben V
+tener_el_pelo_seco trockenes_Haare_haben V
+corte_de_pelo der_Haarschnitt S
+permanente die_Dauerwelle_(-n) S
+rizo die_Locke_(-n) S
+raya der_Scheitel_(-n) S
+mechas die_Strähnchen S
+flequillo der_Pony_(-s) S
+cola_de_caballo der_Pferdeschwanz_(-schwänze) S
+trenza der_Zopf_(Zöpfe) S
+peine der_Kamm_(Kämme) S
+cepillo_para_el_pelo die_Haarbürste S
+pasador_para_el_pelo die_Haarspange_(-n) S
+horquilla_para_el_pelo die_Haarnadel_(-n) S
+rulo der_Lockenwickler_(-) S
+plancha_para_el_pelo der_Lockenstab_(stäbe) S
+peluca die_Perücke_(-n) S
+champú1 das_Shampoo_(-s) S
+champú2 das_Haarwaschmittel_(-) S
+gel das_Gel_(-e) S
+laca das_Haarspray_(-s) S
+caspa die_Schuppen S
+belleza die_Schönheit S
+crema_facial die_Gesichtscreme_(-s) S
+crema_hidratante die_Feuchtigkeitscreme_(-s) S
+mascarilla_facial die_Gesichtspackung_(-en) S
+polvos_(de_tocador) das_Puder_(-) S
+polvera die_Puderdose_(-n) S
+maquillaje_de_base die_Grundierungscreme_(-s) S
+barra_de_labios der_Lippenstift_(-e) S
+rímel die_Wimperntusche_(-n) S
+sombra_de_ojos der_Lidschatten_(-) S
+laca_de_uñas der_Nagellack_(-e) S
+desmaquillante der_Make-up-Entferner_(-) S
+quitaesmalte der_Nagellackentferner_(-) S
+perfume das_Parfüm_(-s) S
+agua_de_colonia das_Eau_de_Toilette_(Eaux) S
+desodorante das_Deodorant_(-s) S
+spray_desodorante das_Deospray_(-s) S
+afeitado die_Rasur_(-en) S
+depilación die_Enthaarung_(-en) S
+barba der_Bart_(Bärte) S
+bigote der_Schnurrbart_(-bärte) S
+navaja_de_afeitar das_Rasiermesser_(-s) S
+maquinilla_de_afeitar der_Rasierapparat_(-e) S
+máquina_de_afeitar der_Elektrorasierer_(-) S
+hoja_de_afeitar die_Rasierklinge_(-n) S
+brocha_de_afeitar der_Rasierpinsel_(-n) S
+crema_de_afeitar Rasiercreme_(-s) S
+loción_para_después_del_afeitado das_Rasierwasser_(-) S
