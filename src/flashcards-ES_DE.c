@@ -4,16 +4,24 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <locale.h>
+#include <time.h>
 #include "files-names.h"
 
 #define MAXWORDS 200
 #define TOTAL_TEMAS 66
 
-const char FOREIGN[][20] = {
-    "Inglés",
-    "Alemán"
+struct UsedIndices
+{
+  int maxWords;  // Número máximo de palabras en la categoría
+  int *indices;  // Array de índices utilizados
+  int usedCount; // Contador de índices utilizados
 };
 
+struct UsedIndices usedIndices[4];
+
+const char FOREIGN[][20] = {
+    "Inglés",
+    "Alemán"};
 
 struct flshcard
 {                   /* Estructura en la que se almacenan los datos de las */
@@ -25,21 +33,27 @@ struct flshcard
 
 int retstFlg;
 
-void initlze(int lang, int file, const char files_names[]);
-void testword(char lang1[], char lang2[], char pos, char theme[]);
+void initlze(int lang, int file, const char files_names[], struct flshcard spGe[], int counts[]);
+void testword(char lang1[], char lang2[], char pos, char theme[], char wchWords, int counts[], int lang, struct UsedIndices usedIndices[]);
+int generateRandomIndex(int maxIndex, int *usedIndices, int *usedCount);
 void clearBuffer();
 
 int main() /* menú principal */
 {
   setlocale(LC_ALL, "C.UTF-8");
 
+  srand(time(NULL));
+
   char ch[2];
   char toAsk[9], toAnswer[9], whchWrds;
   int keepGuessing;
+  int counts[4] = {0};
 
+  
   retstFlg = 0;
 
   keepGuessing = -1;
+
 
   while (keepGuessing != 0)
   {
@@ -110,7 +124,7 @@ int main() /* menú principal */
           // printf("Seleccionaste el archivo %d - %s\n", selectedFile,
           //        files_names[selectedFile - 1]);
 
-          initlze(keepGuessing, selectedFile, files_names[selectedFile - 1]);
+          initlze(keepGuessing, selectedFile, files_names[selectedFile - 1], spGe, counts);
 
           printf("\n\n\n\n\n\n\n\n\n\n\n\n");
           printf("\n\t\tPreguntas de Vocabulario =2023= @francoibanezweb\n\n");
@@ -143,47 +157,48 @@ int main() /* menú principal */
           ch[strcspn(ch, "\n")] = '\0';
           clearBuffer();
 
-int option = atoi(ch); // Convert the input to an integer
+          int option = atoi(ch); // Convert the input to an integer
 
-switch (option) {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-        strcpy(toAsk, "Español");
-        strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
-        whchWrds = (option == 1 || option == 6) ? 'S' :
-                   (option == 2 || option == 7) ? 'V' :
-                   (option == 3 || option == 8) ? 'A' :
-                   (option == 4 || option == 9) ? 'O' : 'T';
-        break;
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-        strcpy(toAsk, FOREIGN[keepGuessing - 1]);
-        strcpy(toAnswer, "Español");
-        whchWrds = (option == 6 || option == 1) ? 'S' :
-                   (option == 7 || option == 2) ? 'V' :
-                   (option == 8 || option == 3) ? 'A' :
-                   (option == 9 || option == 4) ? 'O' : 'T';
-        break;
-    case 11:
-        if (retstFlg == 1) {
-            whchWrds = 'R';
-        }
-        break;
-    case 0:
-        // Handle the case for '0' (Exit) if needed
-        exit(0);
-        break;
-    default:
-        whchWrds = ' '; // Set a default value or handle other cases
-        break;
-}
-
+          switch (option)
+          {
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+            strcpy(toAsk, "Español");
+            strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
+            whchWrds = (option == 1 || option == 6) ? 'S' : (option == 2 || option == 7) ? 'V'
+                                                        : (option == 3 || option == 8)   ? 'A'
+                                                        : (option == 4 || option == 9)   ? 'O'
+                                                                                         : 'T';
+            break;
+          case 6:
+          case 7:
+          case 8:
+          case 9:
+          case 10:
+            strcpy(toAsk, FOREIGN[keepGuessing - 1]);
+            strcpy(toAnswer, "Español");
+            whchWrds = (option == 6 || option == 1) ? 'S' : (option == 7 || option == 2) ? 'V'
+                                                        : (option == 8 || option == 3)   ? 'A'
+                                                        : (option == 9 || option == 4)   ? 'O'
+                                                                                         : 'T';
+            break;
+          case 11:
+            if (retstFlg == 1)
+            {
+              whchWrds = 'R';
+            }
+            break;
+          case 0:
+            // Handle the case for '0' (Exit) if needed
+            exit(0);
+            break;
+          default:
+            whchWrds = ' '; // Set a default value or handle other cases
+            break;
+          }
 
           char theme[256];
           strcpy(theme, files_names[selectedFile - 1]);
@@ -203,13 +218,14 @@ switch (option) {
           }
           // Elimino la extensión .txt
           size_t length = strlen(theme);
-          if (length >= 4) {
+          if (length >= 4)
+          {
             theme[length - 4] = '\0';
           };
 
           system("clear");
 
-          testword(toAsk, toAnswer, whchWrds, theme);
+          testword(toAsk, toAnswer, whchWrds, theme, whchWrds, counts, keepGuessing, usedIndices);
         }
         else
         {
@@ -220,10 +236,19 @@ switch (option) {
   }
 }
 
-void initlze(int lang, int file, const char files_names[]) /* lectura de una lista de palabras de disco */
+void initlze(int lang, int file, const char files_names[], struct flshcard spGe[], int counts[])
+/* lectura de una lista de palabras de disco */
 {
   FILE *filePtr;
   char filePath[256]; // Define a buffer for the file path
+
+  if (counts)
+  {
+    for (int i = 0; i < 4; i++)
+    {
+      counts[i] = 0;
+    }
+  }
 
   if (lang == 1)
   {
@@ -259,6 +284,23 @@ void initlze(int lang, int file, const char files_names[]) /* lectura de una lis
       // printf("Debug: Spanish: %s, German: %s, Part of Speech: %c\n",
       //        Spanish, German, spchPart);
 
+      if (spchPart == 'S')
+      {
+        counts[0]++; // Incrementa el contador de sustantivos
+      }
+      else if (spchPart == 'V')
+      {
+        counts[1]++; // Incrementa el contador de adjetivos
+      }
+      else if (spchPart == 'A')
+      {
+        counts[2]++; // Incrementa el contador de otros elementos gramaticales
+      }
+      else if (spchPart == 'O')
+      {
+        counts[3]++; // Incrementa el contador de todo tipo de elementos gramaticales
+      }
+
       entrCntr++;
 
       if (entrCntr >= MAXWORDS)
@@ -279,208 +321,318 @@ void initlze(int lang, int file, const char files_names[]) /* lectura de una lis
   }
 
   fclose(filePtr);
-}
+};
 
-void testword(char lang1[], char lang2[], char pos, char theme[])
-                                                    /* preguntas al usuario */
-{                                                   /* utilizando parámetros */
-  int wrdCntr, ltrCntr;                             /* a los que se les han */
-  char answer[64];                                  // asignado valores en main()
+void testword(char lang1[], char lang2[], char pos, char theme[], char whchWords, int counts[], int lang, struct UsedIndices usedIndices[])
+/* preguntas al usuario */
+{                       /* utilizando parámetros */
+  int wrdCntr, ltrCntr; /* a los que se les han */
+  char answer[64];      // asignado valores en main()
   char yorn[2];
   int retestFlg;
+  int minIndex, maxIndex;
+  int maxWords = 0;
 
+  /* printf("whchWords: %c\n", whchWords);
+  printf("counts[0]: %d\n", counts[0]);
+  printf("counts[1]: %d\n", counts[1]);
+  printf("counts[2]: %d\n", counts[2]);
+  printf("counts[3]: %d\n", counts[3]); */
+
+  // if (usedIndices == NULL)
+  // {
+  //   printf("Error: Unable to allocate memory for usedIndices\n");
+  //   exit(1);
+  // }
+
+  int usedCount = 0;
 
   wrdCntr = 0;
   if (pos != 'R') /* si no se van a repetir las preguntas erróneas, poner a 0 */
   {               /* las banderas de error para poder anotar los nuevos errores*/
-    while (wrdCntr < MAXWORDS)
+    while (wrdCntr < maxWords)
     {
       spGe[wrdCntr].errorFlg = 0;
       wrdCntr = wrdCntr + 1;
     }
   }
   wrdCntr = 0;
-  while (wrdCntr < MAXWORDS)
+
+   for (int i = 0; i < 4; i++)
   {
-    if (pos != 'T' && pos != 'R' && pos != spGe[wrdCntr].spchPart)
-    {
-      wrdCntr = wrdCntr + 1;
-      continue;
-    }
-    if (pos == 'R' && spGe[wrdCntr].errorFlg != 1)
-    {
-      wrdCntr = wrdCntr + 1;
-      continue;
-    }
-    printf("\n\n\n\n\n\n\n");
-    printf("\t\t   \033[4mTraducción del %s al %s\033[0m\n", lang1, lang2);
-    printf("\t\t   \033[4m%s\033[0m\n", theme + 3);
-    printf("\n\n\t\t\t    \033[4mpreguntas sobre \033[0m");
-    if (pos == 'S')
-    { /* presentación en pantalla */
-      printf("\033[4msustantivos\033[0m");
-    }
-    else if (pos == 'V')
-    {
-      printf("\033[4mverbos\033[0m");
-    }
-    else if (pos == 'A')
-    {
-      printf("\033[4madjetivos\033[0m");
-    }
-    else if (pos == 'O')
-    {
-      printf("\033[4motros elementos gramaticales\033[0m");
-    }
-    else if (pos == 'T')
-    {
-      printf("\033[4mtodo tipo de elementos gramaticales\033[0m");
-    }
-    if (lang1[0] == 'A')
-    {
+    usedIndices[i].maxWords = counts[i];
+    usedIndices[i].indices = (int *)malloc(usedIndices[i].maxWords * sizeof(int));
+    usedIndices[i].usedCount = 0;
+  }
 
-      for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
-        if (spGe[wrdCntr].FOREIGN[i] == '_') {
-           spGe[wrdCntr].FOREIGN[i] = ' ';
+  // Determine the minimum and maximum indices based on whchWords
+  minIndex = 0;
+  // int *usedIndices = NULL;
+
+  if (whchWords == 'S')
+  {
+    maxWords = counts[0]; // Sustantivos
+  }
+  else if (whchWords == 'V')
+  {
+    maxWords = counts[1]; // Verbos
+  }
+  else if (whchWords == 'A')
+  {
+    maxWords = counts[2]; // Adjetivos
+  }
+  else if (whchWords == 'O')
+  {
+    maxWords = counts[3]; // Otros
+  }
+  else if (whchWords == 'T')
+  {
+    maxWords = sizeof(spGe) / sizeof(spGe[0]);
+    usedIndices->maxWords = maxWords; // Todo
+  }
+
+  printf("maxWords: %d\n", maxWords);
+
+  int intWhchWord;
+  switch (whchWords)
+  {
+  case 'S':
+    intWhchWord = 0; // Sustantivos
+    break;
+  case 'V':
+    intWhchWord = 1; // Verbos
+    break;
+  case 'A':
+    intWhchWord = 2; // Adjetivos
+    break;
+  case 'O':
+    intWhchWord = 3; // Otros
+    break;
+  default:
+    // Manejar caso de carácter no válido
+    intWhchWord = -1; // O algún valor que indique un error
+    break;
+  }
+
+  while (wrdCntr < maxWords && usedCount < maxWords)
+  {
+
+    printf("Before generateRandomIndex - usedIndices: ");
+    for (int i = 0; i < usedIndices[intWhchWord].maxWords; i++)
+    {
+      printf("%d ", usedIndices[intWhchWord].indices[i]);
+    }
+    printf("\n");
+
+    int randomIndex = generateRandomIndex(usedIndices[intWhchWord].maxWords, usedIndices[intWhchWord].indices, &usedIndices[intWhchWord].usedCount);
+
+    {
+      if (pos != 'T' && pos != 'R' && pos != spGe[randomIndex].spchPart)
+      {
+        wrdCntr = wrdCntr + 1;
+        continue;
+      }
+      if (pos == 'R' && spGe[randomIndex].errorFlg != 1)
+      {
+        wrdCntr = wrdCntr + 1;
+        continue;
+      }
+      printf("\n\n\n\n\n\n\n");
+      printf("\t\t   \033[4mTraducción del %s al %s\033[0m\n", lang1, lang2);
+      printf("\t\t   \033[4m%s\033[0m\n", theme + 3);
+      printf("\n\n\t\t\t    \033[4mpreguntas sobre \033[0m");
+      if (pos == 'S')
+      { /* presentación en pantalla */
+        printf("\033[4msustantivos\033[0m");
+      }
+      else if (pos == 'V')
+      {
+        printf("\033[4mverbos\033[0m");
+      }
+      else if (pos == 'A')
+      {
+        printf("\033[4madjetivos\033[0m");
+      }
+      else if (pos == 'O')
+      {
+        printf("\033[4motros elementos gramaticales\033[0m");
+      }
+      else if (pos == 'T')
+      {
+        printf("\033[4mtodo tipo de elementos gramaticales\033[0m");
+      }
+      if (lang1[0] == 'A')
+      {
+
+        for (int i = 0; spGe[randomIndex].FOREIGN[i]; i++)
+        {
+          if (spGe[randomIndex].FOREIGN[i] == '_')
+          {
+            spGe[randomIndex].FOREIGN[i] = ' ';
+          }
         }
-      }
 
-      printf("\n\n\n\n\n\n\n\n\n");
-      if (strncmp(spGe[wrdCntr].FOREIGN, "der", 3) == 0)
-      {
-        printf("\t\t\t\t\033[1;38;5;39m%s\033[0m\n", spGe[wrdCntr].FOREIGN);
-      }
-      else if (strncmp(spGe[wrdCntr].FOREIGN, "die", 3) == 0)
-      {
-        printf("\t\t\t\t\033[1;38;5;204m%s\033[0m\n", spGe[wrdCntr].FOREIGN);
-      }
-      else if (strncmp(spGe[wrdCntr].FOREIGN, "das", 3) == 0)
-      {
-        printf("\t\t\t\t\033[1;38;5;46m%s\033[0m\n", spGe[wrdCntr].FOREIGN);
-      }
-      else
-      {
-        printf("\033[1m\t\t\t\t%s\033[0m", spGe[wrdCntr].FOREIGN);
-      }
-      printf("\n\n\n\n\n\n\n\n");
-      printf("¿Cuál es la traducción al Español? \033[1;93m(Doble Enter)\033[0m > ");
-
-      fgets(answer, sizeof(answer), stdin); /* Obtención de la respuesta del  */
-      answer[strcspn(answer, "\n")] = '\0'; /* usuario*/
-      clearBuffer();
-
-
-      for (int i = 0; answer[i]; i++) {
-        if (answer[i] == '_') {
-           answer[i] = ' ';
+        printf("\n\n\n\n\n\n\n\n\n");
+        if (strncmp(spGe[randomIndex].FOREIGN, "der", 3) == 0)
+        {
+          printf("\t\t\t\t\033[1;38;5;39m%s\033[0m\n", spGe[randomIndex].FOREIGN);
         }
-      }
-
-      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++) {
-        if (spGe[wrdCntr].Spanish[i] == '_') {
-           spGe[wrdCntr].Spanish[i] = ' ';
+        else if (strncmp(spGe[randomIndex].FOREIGN, "die", 3) == 0)
+        {
+          printf("\t\t\t\t\033[1;38;5;204m%s\033[0m\n", spGe[randomIndex].FOREIGN);
         }
-      }
+        else if (strncmp(spGe[randomIndex].FOREIGN, "das", 3) == 0)
+        {
+          printf("\t\t\t\t\033[1;38;5;46m%s\033[0m\n", spGe[randomIndex].FOREIGN);
+        }
+        else
+        {
+          printf("\033[1m\t\t\t\t%s\033[0m", spGe[randomIndex].FOREIGN);
+        }
+        printf("\n\n\n\n\n\n\n\n");
+        printf("¿Cuál es la traducción al Español? \033[1;93m(Doble Enter)\033[0m > ");
 
-
-      if (strcasecmp(answer, spGe[wrdCntr].Spanish) == 0)
-      {
-        printf("\033[1;32m%s\033[0m", "\n\nFelicitaciones. Respuesta correcta.");
-        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
-
-        fgets(yorn, sizeof(yorn), stdin);
-        yorn[strcspn(yorn, "\n")] = '\0';
+        fgets(answer, sizeof(answer), stdin); /* Obtención de la respuesta del  */
+        answer[strcspn(answer, "\n")] = '\0'; /* usuario*/
         clearBuffer();
 
-        if (toupper(yorn[0]) == 'N')
+        for (int i = 0; answer[i]; i++)
         {
-          return;
+          if (answer[i] == '_')
+          {
+            answer[i] = ' ';
+          }
         }
+
+        for (int i = 0; spGe[randomIndex].Spanish[i]; i++)
+        {
+          if (spGe[randomIndex].Spanish[i] == '_')
+          {
+            spGe[randomIndex].Spanish[i] = ' ';
+          }
+        }
+
+        if (strcasecmp(answer, spGe[randomIndex].Spanish) == 0)
+        {
+          printf("\033[1;32m%s\033[0m", "\n\nFelicitaciones. Respuesta correcta.");
+          printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
+
+          fgets(yorn, sizeof(yorn), stdin);
+          yorn[strcspn(yorn, "\n")] = '\0';
+          clearBuffer();
+
+          if (toupper(yorn[0]) == 'N')
+          {
+            return;
+          }
+        }
+        else /* mensaje para respuesta correcta o errónea */
+        {
+          spGe[randomIndex].errorFlg = 1;
+          retstFlg = 1;
+          printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
+                 spGe[randomIndex].Spanish);
+          printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
+
+          fgets(yorn, sizeof(yorn), stdin);
+          yorn[strcspn(yorn, "\n")] = '\0';
+          clearBuffer();
+
+          if (toupper(yorn[0]) == 'N')
+          {
+            return;
+          }
+        }
+        wrdCntr = wrdCntr + 1;
       }
-      else /* mensaje para respuesta correcta o errónea */
+      else /* Español-Alemán */
       {
-        spGe[wrdCntr].errorFlg = 1;
-        retstFlg = 1;
-        printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
-               spGe[wrdCntr].Spanish);
-        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
-        fgets(yorn, sizeof(yorn), stdin);
-        yorn[strcspn(yorn, "\n")] = '\0';
-        clearBuffer();
-
-        if (toupper(yorn[0]) == 'N')
+        for (int i = 0; spGe[randomIndex].Spanish[i]; i++)
         {
-          return;
+          if (spGe[randomIndex].Spanish[i] == '_')
+          {
+            spGe[randomIndex].Spanish[i] = ' ';
+          }
         }
-      }
-      wrdCntr = wrdCntr + 1;
-    }
-    else /* Español-Alemán */
-    {
 
-      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++) {
-        if (spGe[wrdCntr].Spanish[i] == '_') {
-           spGe[wrdCntr].Spanish[i] = ' ';
-        }
-      }
+        printf("\n\n\n\n\n\n\n\n\n");
+        printf("\t\t\t\t\033[48;5;208;38;5;15m%s\033[0m", spGe[randomIndex].Spanish);
+        printf("\n\n\n\n\n\n\n\n");
+        printf("¿Cuál es la traducción al %s? \033[1;93m(Doble Enter)\033[0m > ",
+               FOREIGN[lang - 1]);
 
-      printf("\n\n\n\n\n\n\n\n\n");
-      printf("\t\t\t\t\033[48;5;208;38;5;15m%s\033[0m", spGe[wrdCntr].Spanish);
-      printf("\n\n\n\n\n\n\n\n");
-      printf("¿Cuál es la traducción al %s? \033[1;93m(Doble Enter)\033[0m > ",
-             FOREIGN);
+        fgets(answer, sizeof(answer), stdin);
+        answer[strcspn(answer, "\n")] = '\0';
+        clearBuffer(); /* obtención de la respuesta del usuario, paso a mayús */
 
-      fgets(answer, sizeof(answer), stdin);
-      answer[strcspn(answer, "\n")] = '\0';
-      clearBuffer(); /* obtención de la respuesta del usuario, paso a mayús */
-
-      for (int i = 0; answer[i]; i++) {
-        if (answer[i] == '_') {
-           answer[i] = ' ';
-        }
-      }
-
-       for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
-        if (spGe[wrdCntr].FOREIGN[i] == '_') {
-           spGe[wrdCntr].FOREIGN[i] = ' ';
-        }
-      }
-
-      if (strcmp(answer, spGe[wrdCntr].FOREIGN) == 0)
-      {
-        printf("\033[1;32m%s\033[0m", "\n\nFelicitaciones. Respuesta correcta.");
-        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
-
-        fgets(yorn, sizeof(yorn), stdin);
-        yorn[strcspn(yorn, "\n")] = '\0';
-        clearBuffer();
-
-        if (toupper(yorn[0]) == 'N')
+        for (int i = 0; answer[i]; i++)
         {
-          return;
+          if (answer[i] == '_')
+          {
+            answer[i] = ' ';
+          }
         }
-      } /* mensaje para respuesta correcta o errónea */
-      else
-      {
-        spGe[wrdCntr].errorFlg = 1;
-        retstFlg = 1;
-        printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
-               spGe[wrdCntr].FOREIGN);
-        printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
-        fgets(yorn, sizeof(yorn), stdin);
-        yorn[strcspn(yorn, "\n")] = '\0';
-        clearBuffer();
-
-        if (toupper(yorn[0]) == 'N')
+        for (int i = 0; spGe[randomIndex].FOREIGN[i]; i++)
         {
-          return;
+          if (spGe[randomIndex].FOREIGN[i] == '_')
+          {
+            spGe[randomIndex].FOREIGN[i] = ' ';
+          }
         }
+
+        if (strcmp(answer, spGe[randomIndex].FOREIGN) == 0)
+        {
+          printf("\033[1;32m%s\033[0m", "\n\nFelicitaciones. Respuesta correcta.");
+          printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
+
+          fgets(yorn, sizeof(yorn), stdin);
+          yorn[strcspn(yorn, "\n")] = '\0';
+          clearBuffer();
+
+          if (toupper(yorn[0]) == 'N')
+          {
+            return;
+          }
+        } /* mensaje para respuesta correcta o errónea */
+        else
+        {
+          spGe[randomIndex].errorFlg = 1;
+          retstFlg = 1;
+          printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
+                 spGe[randomIndex].FOREIGN);
+          printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
+
+          fgets(yorn, sizeof(yorn), stdin);
+          yorn[strcspn(yorn, "\n")] = '\0';
+          clearBuffer();
+
+          if (toupper(yorn[0]) == 'N')
+          {
+            return;
+          }
+        }
+        wrdCntr = wrdCntr + 1;
       }
-      wrdCntr = wrdCntr + 1;
     }
   }
+}
+
+int generateRandomIndex(int maxIndex, int *usedIndices, int *usedCount)
+{
+  printf("Debug: maxIndex = %d, usedCount = %d\n", maxIndex, *usedCount);
+
+  int randomIndex;
+  do
+  {
+    randomIndex = rand() % maxIndex;
+    printf("Random Index: %d, usedIndices[%d]: %d\n", randomIndex, randomIndex, usedIndices[randomIndex]);
+  } while (*usedCount > 0 && usedIndices[randomIndex] == 1);
+
+  usedIndices[randomIndex] = 1;
+  (*usedCount)++; // Increment usedCount through the pointer
+  return randomIndex;
 }
 
 void clearBuffer()
