@@ -1,9 +1,3 @@
-parecer appear V
-pesar weigh V
-describir describe V
-bastante quite A
-muy very O
-demasiado to_much A
 descripción description S
 apariencia appearance S
 aspecto looks S
@@ -28,6 +22,11 @@ peca freckle S
 arruga wrinkle S
 hoyuelo dimple S
 gafas glasses S
+parecer appear V
+pesar weigh V
+describir describe V
+bastante quite A
+demasiado to_much A
 joven young A
 viejo old A
 alto tall A
@@ -50,3 +49,4 @@ verde green A
 gris gray A
 marrón brown A
 negro black A
+muy very O

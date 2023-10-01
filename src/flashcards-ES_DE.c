@@ -17,7 +17,7 @@ struct UsedIndices
   int usedCount; // Contador de índices utilizados
 };
 
-struct UsedIndices usedIndices[4];
+struct UsedIndices usedIndices[5];
 
 const char FOREIGN[][20] = {
     "Inglés",
@@ -35,7 +35,7 @@ int retstFlg;
 
 void initlze(int lang, int file, const char files_names[], struct flshcard spGe[], int counts[]);
 void testword(char lang1[], char lang2[], char pos, char theme[], char wchWords, int counts[], int lang, struct UsedIndices usedIndices[]);
-int generateRandomIndex(int maxIndex, int *usedIndices, int *usedCount);
+int generateRandomIndex(int maxIndex, int *usedCount, int *indices, struct flshcard *spGe, int prtSpch);
 void clearBuffer();
 
 int main() /* menú principal */
@@ -49,11 +49,9 @@ int main() /* menú principal */
   int keepGuessing;
   int counts[4] = {0};
 
-  
   retstFlg = 0;
 
   keepGuessing = -1;
-
 
   while (keepGuessing != 0)
   {
@@ -358,40 +356,52 @@ void testword(char lang1[], char lang2[], char pos, char theme[], char whchWords
   }
   wrdCntr = 0;
 
-   for (int i = 0; i < 4; i++)
+  for (int i = 0; i < 5; i++)
   {
     usedIndices[i].maxWords = counts[i];
-    usedIndices[i].indices = (int *)malloc(usedIndices[i].maxWords * sizeof(int));
     usedIndices[i].usedCount = 0;
   }
-
   // Determine the minimum and maximum indices based on whchWords
-  minIndex = 0;
+
   // int *usedIndices = NULL;
 
   if (whchWords == 'S')
   {
+    minIndex = 0;
     maxWords = counts[0]; // Sustantivos
+    usedIndices[0].maxWords = maxWords - 1;
+    for (int i = 0; i < 5; i++)
+    {
+      usedIndices[0].indices = (int *)malloc(usedIndices[i].maxWords * sizeof(int));
+    }
   }
   else if (whchWords == 'V')
   {
-    maxWords = counts[1]; // Verbos
+    minIndex = counts[0];
+    maxWords = counts[1] + counts[0]; // Verbos
+    usedIndices[1].maxWords = maxWords - 1;
   }
   else if (whchWords == 'A')
   {
-    maxWords = counts[2]; // Adjetivos
+    minIndex = counts[1];
+    maxWords = counts[2] + counts[1] + counts[0]; // Adjetivos
+    usedIndices[2].maxWords = maxWords - 1;
   }
   else if (whchWords == 'O')
   {
-    maxWords = counts[3]; // Otros
+    minIndex = counts[2];
+    maxWords = counts[3] + counts[2] + counts[1] + counts[0]; // Otros
+    usedIndices[3].maxWords = maxWords - 1;
   }
   else if (whchWords == 'T')
   {
-    maxWords = sizeof(spGe) / sizeof(spGe[0]);
-    usedIndices->maxWords = maxWords; // Todo
+
+    minIndex = 0;
+    maxWords = counts[3] + counts[2] + counts[1] + counts[0];
+    usedIndices[4].maxWords = maxWords - 1; // Todo
   }
 
-  printf("maxWords: %d\n", maxWords);
+  // printf("maxWords: %d\n", maxWords);
 
   int intWhchWord;
   switch (whchWords)
@@ -408,23 +418,27 @@ void testword(char lang1[], char lang2[], char pos, char theme[], char whchWords
   case 'O':
     intWhchWord = 3; // Otros
     break;
+  case 'T':
+    intWhchWord = 4; // Todos
   default:
     // Manejar caso de carácter no válido
     intWhchWord = -1; // O algún valor que indique un error
     break;
   }
 
-  while (wrdCntr < maxWords && usedCount < maxWords)
+  usedIndices[intWhchWord].indices = (int *)malloc((maxWords - minIndex) * sizeof(int));
+  if (usedIndices[intWhchWord].indices == NULL)
   {
+    // Manejar error de asignación de memoria
+    // Puedes mostrar un mensaje de error y salir del programa o tomar medidas adecuadas.
+    exit(EXIT_FAILURE);
+  }
 
-    printf("Before generateRandomIndex - usedIndices: ");
-    for (int i = 0; i < usedIndices[intWhchWord].maxWords; i++)
-    {
-      printf("%d ", usedIndices[intWhchWord].indices[i]);
-    }
-    printf("\n");
+  while (wrdCntr < maxWords && usedCount <= maxWords)
+  {
+    printf("minIndex : %d, maxIndex : %d\n", minIndex, usedIndices[intWhchWord].maxWords);
 
-    int randomIndex = generateRandomIndex(usedIndices[intWhchWord].maxWords, usedIndices[intWhchWord].indices, &usedIndices[intWhchWord].usedCount);
+    int randomIndex = generateRandomIndex(usedIndices[intWhchWord].maxWords, &usedIndices[intWhchWord].usedCount, usedIndices[intWhchWord].indices, spGe, intWhchWord);
 
     {
       if (pos != 'T' && pos != 'R' && pos != spGe[randomIndex].spchPart)
@@ -514,6 +528,7 @@ void testword(char lang1[], char lang2[], char pos, char theme[], char whchWords
 
         if (strcasecmp(answer, spGe[randomIndex].Spanish) == 0)
         {
+          /* respuesta correcta */
           printf("\033[1;32m%s\033[0m", "\n\nFelicitaciones. Respuesta correcta.");
           printf("\n¿Desea intentarlo de nuevo? (\033[1;32mS\033[0m/\033[1;91mN\033[0m) > ");
 
@@ -526,8 +541,9 @@ void testword(char lang1[], char lang2[], char pos, char theme[], char whchWords
             return;
           }
         }
-        else /* mensaje para respuesta correcta o errónea */
+        else
         {
+          /* respuesta incorrecta */
           spGe[randomIndex].errorFlg = 1;
           retstFlg = 1;
           printf("\033[1;91m\n\tLa respuesta correcta es \033[1;96m%s\033[1;91m.\033[0m",
@@ -619,19 +635,17 @@ void testword(char lang1[], char lang2[], char pos, char theme[], char whchWords
   }
 }
 
-int generateRandomIndex(int maxIndex, int *usedIndices, int *usedCount)
+int generateRandomIndex(int maxIndex, int *usedCount, int *indices, struct flshcard *spGe, int prtSpch)
 {
-  printf("Debug: maxIndex = %d, usedCount = %d\n", maxIndex, *usedCount);
-
   int randomIndex;
   do
   {
     randomIndex = rand() % maxIndex;
-    printf("Random Index: %d, usedIndices[%d]: %d\n", randomIndex, randomIndex, usedIndices[randomIndex]);
-  } while (*usedCount > 0 && usedIndices[randomIndex] == 1);
+    printf("Debug: randomIndex = %d, usedCount = %d, indices[%d] = %d\n", randomIndex, *usedCount, randomIndex, indices[randomIndex]);
+  } while (*usedCount > 0 && indices[randomIndex] == 1);
 
-  usedIndices[randomIndex] = 1;
-  (*usedCount)++; // Increment usedCount through the pointer
+  indices[randomIndex] = 1;
+  (*usedCount)++; // Incrementa usedCount a través del puntero
   return randomIndex;
 }
 
