@@ -1,85 +1,84 @@
-cabeza  S
-cuello  S
-garganta  S
-nuca  S
-hombro  S
-pecho  S
-pecho,seno  S
-senos  S
-barriga,vientre  S
-espalda  S
-brazo  S
-codo  S
-mano  S
-muñeca  S
-puño  S
-dedo  S
-pulgar  S
-índice  S
-dedo_corazón  S
-anular  S
-meñique  S
-uña  S
-cintura  S
-cadera  S
-trasero  S
-nalgas  S
-culo  S
-pierna  S
-muslo  S
-rodilla  S
-pantorrilla  S
-tobillo  S
-pie  S
-talón  S
-dedo_del_pie  S
-órgano  S
-miembro  S
-músculo  S
-hueso  S
-esqueleto  S
-espina_dorsal  S
-columna_vertebral  S
-costilla  S
-carne  S
-piel  S
-corazón  S
-pulmón  S
-aparato_digestivo  S
-estómago  S
-hígado  S
-riñón  S
-vejiga  S
-sangre  S
-vena  S
-arteria  S
-cráneo  S
-cerebro  S
-pelo  S
-rostro,cara  S
-rasgos_faciales  S
-frente  S
-cejas  S
-pestaña  S
-ojo  S
-párpado1  S
-párpado2  S
-pupila  S
-nariz  S
-fosa_nasal  S
-moflete  S
-mejilla  S
-pómulo  S
-sien  S
-mandíbula  S
-boca  S
-labios  S
-lengua  S
-diente  S
-diente_de_leche  S
-muela_del_juicio  S
-mentón,barbilla  S
-papada  S
-hoyuelo  S
-oreja  S
-lóbulo_de_la_oreja  S
+cabeza head S
+cuello neck S
+garganta throat S
+nuca nape S
+hombro shoulder S
+pecho chest S
+pecho,seno bust S
+senos breasts S
+barriga,vientre belly S
+espalda back S
+brazo arm S
+codo elbow S
+mano hand S
+muñeca wrist S
+puño fist S
+dedo finger S
+pulgar thumb S
+índice index S
+dedo_corazón middle_finger S
+anular ring_finger S
+meñique little_finger S
+uña nail S
+cintura waist S
+cadera hip S
+trasero butt S
+nalgas backside S
+culo ass S
+pierna leg S
+muslo thigh S
+rodilla knee S
+pantorrilla calf S
+tobillo ankle S
+pie foot S
+talón heel S
+dedo_del_pie toe S
+órgano organ S
+miembro member S
+músculo muscle S
+hueso bone S
+esqueleto skeleton S
+espina_dorsal dorsal_spine S
+columna_vertebral spinal_column S
+costilla rib S
+carne flesh S
+piel skin S
+corazón heart S
+pulmón lung S
+aparato_digestivo digestive_system S
+estómago stomach S
+hígado liver S
+riñón kidney S
+vejiga bladder S
+sangre blood S
+vena vein S
+arteria artery S
+cráneo skull S
+cerebro brain S
+pelo hair S
+rostro,cara face S
+rasgos_faciales features S
+frente forehead S
+cejas eyebrow S
+pestaña eyelash S
+ojo eye S
+párpado1 eyelid S
+pupila pupil S
+nariz nose S
+fosa_nasal nostril S
+moflete chubby_cheeks S
+mejilla cheek S
+pómulo cheekbone S
+sien temple S
+mandíbula jaw S
+boca mouth S
+labios lips S
+lengua tonge S
+diente tooth S
+diente_de_leche milk_tooth S
+muela_del_juicio wisdom_tooth S
+mentón,barbilla chin S
+papada double_chin S
+hoyuelo dimple S
+oreja ear S
+lóbulo_de_la_oreja earlobe S
