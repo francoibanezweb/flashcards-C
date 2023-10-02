@@ -1,88 +1,86 @@
-peinar  V
-cepillar  V
-cortar  V
-igualar  V
-hacerse_un_peinado  V
-peinarse(el_pelo)  V
-cepillarse_el_pelo  V
-teñirse_el_pelo  V
-teñirse_de_rubio  V
-hacerse_cortar_el_pelo  V
-ir_a_teñirse  V
-hacerse_secar_el_pelo  V
-mirarse_en_el_espejo  V
-maquillarse  V
-desmaquillarse  V
-perfumarse  V
-pintarse_las_uñas  V
-afeitarse  V
-depilarse  V
-llevar_el_pelo_corto  V
-llevar_el_pelo_largo  V
-llevar_melenita  V
-ser_calvo  V
-tener_el_pelo_rubio  V
-tener_el_pelo_castaño  V
-tener_el_pelo_negro  V
-tener_el_pelo_pelirrojo  V
-tener_el_pelo_gris  V
-tener_el_pelo_entrecano  V
-tener_el_pelo_blanco  V
-ser_rubio  V
-peinado  S
-tener_el_pelo_crespo  V
-tener_el_pelo_rizado  V
-tener_el_pelo_ondulado  V
-tener_el_pelo_liso  V
-tener_el_pelo_espeso  V
-tener_el_pelo_teñido  V
-tener_el_pelo_graso  V
-tener_el_pelo_seco  V
-corte_de_pelo  S
-permanente  S
-rizo  S
-raya  S
-mechas  S
-flequillo  S
-cola_de_caballo  S
-trenza  S
-peine  S
-cepillo_para_el_pelo  S
-pasador_para_el_pelo  S
-horquilla_para_el_pelo  S
-rulo  S
-plancha_para_el_pelo  S
-peluca  S
-champú1  S
-champú2  S
-gel  S
-laca  S
-caspa  S
-belleza  S
-crema_facial  S
-crema_hidratante  S
-mascarilla_facial  S
-polvos(de_tocador)  S
-polvera  S
-maquillaje_de_base  S
-barra_de_labios  S
-rímel  S
-sombra_de_ojos  S
-laca_de_uñas  S
-desmaquillante  S
-quitaesmalte  S
-perfume  S
-agua_de_colonia  S
-desodorante  S
-spray_desodorante  S
-afeitado  S
-depilación  S
-barba  S
-bigote  S
-navaja_de_afeitar  S
-maquinilla_de_afeitar  S
-máquina_de_afeitar  S
-hoja_de_afeitar  S
-brocha_de_afeitar  S
-crema_de_afeitar  S
-loción_para_después_del_afeitado  S
+peinar comb V
+cepillar brush V
+cortar cortar V
+igualar equalize V
+hacerse_un_peinado touch_up_hair V
+peinarse(el_pelo) comb V
+cepillarse_el_pelo brush_your_hair V
+teñirse_el_pelo dye V
+teñirse_de_rubio dye_blonde V
+hacerse_cortar_el_pelo get_a_haircut V
+ir_a_teñirse go_get_dyed V
+hacerse_secar_el_pelo get_your_hair_dried V
+mirarse_en_el_espejo look_in_the_mirror V
+maquillarse put_on_makeup V
+desmaquillarse take_your_makeup_off V
+perfumarse splash_on_some_perfume V
+pintarse_las_uñas to_paint_the_nails V
+afeitarse shave V
+depilarse shave V
+llevar_el_pelo_corto wear_short_hair V
+llevar_el_pelo_largo wear_long_hair V
+ser_calvo being_bald V
+tener_el_pelo_rubio have_blond_hair V
+tener_el_pelo_castaño have_brown_hair V
+tener_el_pelo_negro have_black_hair V
+tener_el_pelo_pelirrojo have_red_hair V
+tener_el_pelo_gris have_gray_hair V
+tener_el_pelo_entrecano have_grayish_hair V
+tener_el_pelo_blanco have_white_hair V
+ser_rubio be_blonde V
+peinado hairstyle S
+tener_el_pelo_crespo have_curly_hair V
+tener_el_pelo_rizado have_curly_hair V
+tener_el_pelo_ondulado have_wavy_hair V
+tener_el_pelo_liso have_straight_hair V
+tener_el_pelo_espeso have_thick_hair V
+tener_el_pelo_teñido have_dyed_hair V
+tener_el_pelo_graso have_oily_hair V
+tener_el_pelo_seco have_dry_hair V
+corte_de_pelo haircut S
+permanente permanent S
+rizo curl S
+raya part S
+mechas streaks S
+flequillo bangs S
+cola_de_caballo pony_tail S
+trenza braid S
+peine comb S
+cepillo_para_el_pelo brush S
+pasador_para_el_pelo hairpin S
+horquilla_para_el_pelo hairpin S
+rulero curler S
+plancha_para_el_pelo hair_iron S
+peluca wig S
+champú shampoo S
+gel hair_gel S
+laca hairspray S
+caspa dandruff S
+belleza beauty S
+crema_facial face_cream S
+crema_hidratante moisturizing_cream S
+mascarilla_facial face_mask S
+polvos(de_tocador) powder S
+polvera powder_compact S
+maquillaje_de_base base S
+barra_de_labios lipstick S
+rímel mascara S
+sombra_de_ojos eye_shadow S
+laca_de_uñas nail_polish S
+desmaquillante makeup_remover S
+quitaesmalte nail_polish_remover S
+perfume perfume S
+agua_de_colonia cologne S
+desodorante deodorant S
+spray_desodorante spray_deodorant S
+afeitado shave S
+depilación hair_removal S
+barba beard S
+bigote mustache S
+navaja_de_afeitar razor S
+maquinilla_de_afeitar razor S
+máquina_de_afeitar razor S
+hoja_de_afeitar razor_blade S
+brocha_de_afeitar shaving_brush S
+crema_de_afeitar shaving_foam S
+loción_para_después_del_afeitado aftershave S
