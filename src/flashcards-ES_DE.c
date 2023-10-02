@@ -11,9 +11,7 @@
 
 const char FOREIGN[][20] = {
     "Inglés",
-    "Alemán"
-};
-
+    "Alemán"};
 
 struct flshcard
 {                   /* Estructura en la que se almacenan los datos de las */
@@ -143,47 +141,48 @@ int main() /* menú principal */
           ch[strcspn(ch, "\n")] = '\0';
           clearBuffer();
 
-int option = atoi(ch); // Convert the input to an integer
+          int option = atoi(ch); // Convert the input to an integer
 
-switch (option) {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-        strcpy(toAsk, "Español");
-        strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
-        whchWrds = (option == 1 || option == 6) ? 'S' :
-                   (option == 2 || option == 7) ? 'V' :
-                   (option == 3 || option == 8) ? 'A' :
-                   (option == 4 || option == 9) ? 'O' : 'T';
-        break;
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-        strcpy(toAsk, FOREIGN[keepGuessing - 1]);
-        strcpy(toAnswer, "Español");
-        whchWrds = (option == 6 || option == 1) ? 'S' :
-                   (option == 7 || option == 2) ? 'V' :
-                   (option == 8 || option == 3) ? 'A' :
-                   (option == 9 || option == 4) ? 'O' : 'T';
-        break;
-    case 11:
-        if (retstFlg == 1) {
-            whchWrds = 'R';
-        }
-        break;
-    case 0:
-        // Handle the case for '0' (Exit) if needed
-        exit(0);
-        break;
-    default:
-        whchWrds = ' '; // Set a default value or handle other cases
-        break;
-}
-
+          switch (option)
+          {
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+            strcpy(toAsk, "Español");
+            strcpy(toAnswer, FOREIGN[keepGuessing - 1]);
+            whchWrds = (option == 1 || option == 6) ? 'S' : (option == 2 || option == 7) ? 'V'
+                                                        : (option == 3 || option == 8)   ? 'A'
+                                                        : (option == 4 || option == 9)   ? 'O'
+                                                                                         : 'T';
+            break;
+          case 6:
+          case 7:
+          case 8:
+          case 9:
+          case 10:
+            strcpy(toAsk, FOREIGN[keepGuessing - 1]);
+            strcpy(toAnswer, "Español");
+            whchWrds = (option == 6 || option == 1) ? 'S' : (option == 7 || option == 2) ? 'V'
+                                                        : (option == 8 || option == 3)   ? 'A'
+                                                        : (option == 9 || option == 4)   ? 'O'
+                                                                                         : 'T';
+            break;
+          case 11:
+            if (retstFlg == 1)
+            {
+              whchWrds = 'R';
+            }
+            break;
+          case 0:
+            // Handle the case for '0' (Exit) if needed
+            exit(0);
+            break;
+          default:
+            whchWrds = ' '; // Set a default value or handle other cases
+            break;
+          }
 
           char theme[256];
           strcpy(theme, files_names[selectedFile - 1]);
@@ -203,7 +202,8 @@ switch (option) {
           }
           // Elimino la extensión .txt
           size_t length = strlen(theme);
-          if (length >= 4) {
+          if (length >= 4)
+          {
             theme[length - 4] = '\0';
           };
 
@@ -282,13 +282,12 @@ void initlze(int lang, int file, const char files_names[]) /* lectura de una lis
 }
 
 void testword(char lang1[], char lang2[], char pos, char theme[])
-                                                    /* preguntas al usuario */
-{                                                   /* utilizando parámetros */
-  int wrdCntr, ltrCntr;                             /* a los que se les han */
-  char answer[64];                                  // asignado valores en main()
+/* preguntas al usuario */
+{                       /* utilizando parámetros */
+  int wrdCntr, ltrCntr; /* a los que se les han */
+  char answer[64];      // asignado valores en main()
   char yorn[2];
   int retestFlg;
-
 
   wrdCntr = 0;
   if (pos != 'R') /* si no se van a repetir las preguntas erróneas, poner a 0 */
@@ -339,9 +338,11 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
     if (lang1[0] == 'A')
     {
 
-      for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
-        if (spGe[wrdCntr].FOREIGN[i] == '_') {
-           spGe[wrdCntr].FOREIGN[i] = ' ';
+      for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++)
+      {
+        if (spGe[wrdCntr].FOREIGN[i] == '_')
+        {
+          spGe[wrdCntr].FOREIGN[i] = ' ';
         }
       }
 
@@ -369,19 +370,21 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
       answer[strcspn(answer, "\n")] = '\0'; /* usuario*/
       clearBuffer();
 
-
-      for (int i = 0; answer[i]; i++) {
-        if (answer[i] == '_') {
-           answer[i] = ' ';
+      for (int i = 0; answer[i]; i++)
+      {
+        if (answer[i] == '_')
+        {
+          answer[i] = ' ';
         }
       }
 
-      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++) {
-        if (spGe[wrdCntr].Spanish[i] == '_') {
-           spGe[wrdCntr].Spanish[i] = ' ';
+      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++)
+      {
+        if (spGe[wrdCntr].Spanish[i] == '_')
+        {
+          spGe[wrdCntr].Spanish[i] = ' ';
         }
       }
-
 
       if (strcasecmp(answer, spGe[wrdCntr].Spanish) == 0)
       {
@@ -419,14 +422,16 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
     else /* Español-Alemán */
     {
 
-      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++) {
-        if (spGe[wrdCntr].Spanish[i] == '_') {
-           spGe[wrdCntr].Spanish[i] = ' ';
+      for (int i = 0; spGe[wrdCntr].Spanish[i]; i++)
+      {
+        if (spGe[wrdCntr].Spanish[i] == '_')
+        {
+          spGe[wrdCntr].Spanish[i] = ' ';
         }
       }
 
       printf("\n\n\n\n\n\n\n\n\n");
-      printf("\t\t\t\t\033[48;5;208;38;5;15m%s\033[0m", spGe[wrdCntr].Spanish);
+      printf("\t\t\t\t\033[1;38;5;51;48;5;0m%s\033[0m", spGe[wrdCntr].Spanish);
       printf("\n\n\n\n\n\n\n\n");
       printf("¿Cuál es la traducción al %s? \033[1;93m(Doble Enter)\033[0m > ",
              FOREIGN);
@@ -435,15 +440,19 @@ void testword(char lang1[], char lang2[], char pos, char theme[])
       answer[strcspn(answer, "\n")] = '\0';
       clearBuffer(); /* obtención de la respuesta del usuario, paso a mayús */
 
-      for (int i = 0; answer[i]; i++) {
-        if (answer[i] == '_') {
-           answer[i] = ' ';
+      for (int i = 0; answer[i]; i++)
+      {
+        if (answer[i] == '_')
+        {
+          answer[i] = ' ';
         }
       }
 
-       for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++) {
-        if (spGe[wrdCntr].FOREIGN[i] == '_') {
-           spGe[wrdCntr].FOREIGN[i] = ' ';
+      for (int i = 0; spGe[wrdCntr].FOREIGN[i]; i++)
+      {
+        if (spGe[wrdCntr].FOREIGN[i] == '_')
+        {
+          spGe[wrdCntr].FOREIGN[i] = ' ';
         }
       }
 
