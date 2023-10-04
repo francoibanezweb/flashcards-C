@@ -1,27 +1,27 @@
-sentirse  V
-volverse  V
-tener_hambre  V
-tener_sed  V
-tener_sueño  V
-harto(de_comer)  A
-en_forma  A
-en_plena_forma  A
-cansado  A
-agotado  A
-hecho_polvo  A
-sin_aliento  A
-lento,apático  A
-fuerte  A
-débil  A
-frágil  A
-saludable  A
-con_buena_salud  A
-enfermo  A
-despierto  A
-excitado  A
-relajado  A
-medio_dormido  A
-empapado  A
-congelado  A
-demasiado  A
-completamente  A
+sentirse sich_fühel V
+volverse werden V
+tener_hambre hungrig_sein V
+tener_sed durstig_sein V
+tener_sueño schläfrig_sein V
+harto(de_comer) satt A
+en_forma fit A
+en_plena_forma in_Hochform A
+cansado müde A
+agotado erschöpft A
+hecho_polvo fix_und_fertig A
+sin_aliento atemlos A
+lento,apático träge A
+fuerte stark A
+débil schwach A
+frágil gebrechlich A
+saludable gesund A
+con_buena_salud bei_guter_Gesundheit A
+enfermo krank A
+despierto wach A
+excitado erregt A
+relajado entspannt A
+medio_dormido im_Halpbschlaf A
+empapado durchnässt A
+congelado durch(ge)froren A
+demasiado zu A
+completamente völlig A
