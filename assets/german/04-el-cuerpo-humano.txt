@@ -1,85 +1,85 @@
-cabeza  S
-cuello  S
-garganta  S
-nuca  S
-hombro  S
-pecho  S
-pecho,seno  S
-senos  S
-barriga,vientre  S
-espalda  S
-brazo  S
-codo  S
-mano  S
-muñeca  S
-puño  S
-dedo  S
-pulgar  S
-índice  S
-dedo_corazón  S
-anular  S
-meñique  S
-uña  S
-cintura  S
-cadera  S
-trasero  S
-nalgas  S
-culo  S
-pierna  S
-muslo  S
-rodilla  S
-pantorrilla  S
-tobillo  S
-pie  S
-talón  S
-dedo_del_pie  S
-órgano  S
-miembro  S
-músculo  S
-hueso  S
-esqueleto  S
-espina_dorsal  S
-columna_vertebral  S
-costilla  S
-carne  S
-piel  S
-corazón  S
-pulmón  S
-aparato_digestivo  S
-estómago  S
-hígado  S
-riñón  S
-vejiga  S
-sangre  S
-vena  S
-arteria  S
-cráneo  S
-cerebro  S
-pelo  S
-rostro,cara  S
-rasgos_faciales  S
-frente  S
-cejas  S
-pestaña  S
-ojo  S
-párpado1  S
-párpado2  S
-pupila  S
-nariz  S
-fosa_nasal  S
-moflete  S
-mejilla  S
-pómulo  S
-sien  S
-mandíbula  S
-boca  S
-labios  S
-lengua  S
-diente  S
-diente_de_leche  S
-muela_del_juicio  S
-mentón,barbilla  S
-papada  S
-hoyuelo  S
-oreja  S
-lóbulo_de_la_oreja  S
+cabeza der_Kopf_(Köpfe) S
+cuello der_Hals_(Hälse) S
+garganta die_Kehle_(-n) S
+nuca der_Nacken_(-) S
+hombro die_Schulter_(-n) S
+pecho die_Brust_(Brüste) S
+pecho,seno der_Busen_(-) S
+senos die_Brüste S
+barriga,vientre der_Bauch_(Bäuche) S
+espalda der_Rücken_(-) S
+brazo der_Arm_(-e) S
+codo der_Ell(en)bogen_(-) S
+mano die_Hand_(Hände) S
+muñeca das_Handgelenk_(-e) S
+puño die_Faust_(Fäuste) S
+dedo der_Finger_(-) S
+pulgar der_Daumen_(-) S
+índice der_Zeigefinger_(-) S
+dedo_corazón der_Mittelfinger_(-) S
+anular der_Ringfinger_(-) S
+meñique der_kleine_Finger_(-) S
+uña der_Nagel_(Nägel) S
+cintura die_Taille_(-n) S
+cadera die_Hüfte_(-n) S
+trasero der_Hintern_(-) S
+nalgas das_Gesäß_(-e) S
+culo der_Popo_(-s) S
+pierna das_Bein_(-e) S
+muslo der_Schenkel_(-) S
+rodilla das_Knie_(-) S
+pantorrilla die_Wade_(-n) S
+tobillo der_Knöchel_(-) S
+pie der_Fuß_(Füße) S
+talón die_Ferse_(-n) S
+dedo_del_pie die_Zehe_(-n) S
+órgano das_Organ_(-e) S
+miembro das_Glied_(-er) S
+músculo der_Muskel_(-n) S
+hueso der_Knocken_(-) S
+esqueleto das_Skelett_(e) S
+espina_dorsal das_Rückgrat_(-e) S
+columna_vertebral die_Wirbelsäule_(-n) S
+costilla die_Rippe_(-n) S
+carne das_Fleisch S
+piel die_Haut_(Häute) S
+corazón das_Herz_(-en) S
+pulmón die_Lunge_(-n) S
+aparato_digestivo das_Verdauungssystem_(-e) S
+estómago der_Magen_(Mägen) S
+hígado die_Leber_(-n) S
+riñón die_Niere_(-n) S
+vejiga die_Blase_(-n) S
+sangre das_Blut S
+vena die_Vene_(-n) S
+arteria die_Arterie_(-n) S
+cráneo der_Schädel_(-) S
+cerebro das_Gehirn_(-e) S
+pelo das_Haar_(-e) S
+rostro,cara das_Gesicht_(-er) S
+rasgos_faciales die_Gesichtzüge S
+frente die_Stirn_(-en) S
+cejas die_Augenbraue_(-n) S
+pestaña die_Wimper_(-n) S
+ojo das_Auge_(-n) S
+párpado1 das_Augenlid_(-er) S
+párpado2 das_Lid_(-er) S
+pupila die_Pupille_(-n) S
+nariz die_Nase_(-n) S
+fosa_nasal das_Nasenloch_(-löcher) S
+moflete die_Backe_(-n) S
+mejilla die_Wange_(-n) S
+pómulo der_Backenknochen_(-) S
+sien die_Schläfe_(-n) S
+mandíbula der_Kiefer_(-) S
+boca der_Mund_(Münder) S
+labios die_Lippe_(-n) S
+lengua die_Zunge_(-n) S
+diente der_Zahn_(Zähne) S
+diente_de_leche der_Milchzahn_(zähne) S
+muela_del_juicio der_Weisheitszahn_(-zähne) S
+mentón,barbilla das_Kinn_(-e) S
+papada das_Doppelkinn_(-e) S
+hoyuelo das_Grübchen_(-) S
+oreja das_Ohr_(-en) S
+lóbulo_de_la_oreja das_Ohrläppchen_(-) S
