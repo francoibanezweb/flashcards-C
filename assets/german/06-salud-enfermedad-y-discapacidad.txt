@@ -1,85 +1,85 @@
-tener_buena_salud  A
-estar_enfermo  A
-caer_enfermo,enfermar  A
-coger,agarrar  V
-dolor_de_estomágo  S
-dolor_de_cabeza  S
-dolor_de_garganta  S
-dolor_de_espalda  S
-dolor_de_muela  S
-sentirse_enfermo  V
-marearse  V
-tener_dolores  V
-sufrir,padecer  V
-estar_resfriado  V
-padecer_del_corazón  V
-romperse_un_brazo/una_pierna  V
-torcerse_el_tobillo  V
-hacerse_una_herida_en_la_mano  V
-hacerse_daño  V
-sangrar  V
-doler  V
-vomitar  V
-toser  V
-estornudar  V
-sudar  V
-temblar  V
-tener_fiebre  V
-desmayarse  V
-estar_en_coma  V
-sufrir_una_recaída  V
-tratar  V
-cuidar  V
-ocuparse_de  V
-llamar  V
-encargar  V
-pedir_hora/cita  V
-reconocer  V
-aconsejar  V
-prescribir,recetar  V
-operar  V
-someterse_a_una_intervención_quirúrgica  V
-operarse_de_amígdalas  V
-hacer_una_radiografía  V
-vendar  V
-necesitar  V
-tomar  V
-aplicar,untar  V
-descansar  V
-curar  V
-restablecerse  V
-hacer_régimen/dieta  V
-adelgazar  V
-engordar  V
-empeorar  V
-morir  V
-enfermo  A
-indispuesto  A
-débil  A
-curado  A
-con_buena_salud  A
-en_forma  A
-vivo  A
-alérgico_a  A
-anémico  A
-epiléptico  A
-diabético  A
-estreñido  A
-ebrio  A
-doloroso  A
-contagioso  A
-serio  A
-grave  A
-infectado  A
-hinchado  A
-roto,fracturado  A
-dislocado  A
-embarazada  A
-aborto_espontáneo  S
-aborto_provocado  S
-menstruación  S
-compresa  S
-tampón  S
+tener_buena_salud gesund_sein V
+estar_enfermo krank_sein V
+caer_enfermo,enfermar krank_werden V
+contraer bekommen V
+dolor_de_estomágo die_Magenschmerzen S
+dolor_de_cabeza die_Kpfschmerzen S
+dolor_de_garganta die_Halsschmerzen S
+dolor_de_espalda die_Rückenschmerzen S
+dolor_de_muela die_Zahnschmerzen S
+sentirse_enfermo sich_krank_fühlen V
+marearse seekrank_sein V
+tener_dolores schmerzen_haben V
+sufrir,padecer leiden_an V
+estar_resfriado erkältet_sein V
+padecer_del_corazón ein_herzleiden_haben V
+romperse_un_brazo/una_pierna sich_den_Arm/das_Bein_brechen V
+torcerse_el_tobillo sich_den_Knöchel_verstauchen V
+hacerse_una_herida_en_la_mano sich_an_der_Hand_verletzen V
+hacerse_daño verletzen V
+sangrar bluten V
+doler wehtun V
+vomitar erbrechen V
+toser husten V
+estornudar niesen V
+sudar schwitzen V
+temblar zittern V
+tener_fiebre Fieber_haben V
+desmayarse in_Ohnmacht_fallen V
+estar_en_coma ohnmächtig_sein V
+sufrir_una_recaída rückfällig_werden V
+tratar behandeln V
+cuidar pflegen V
+ocuparse_de sich_kümmern_um V
+llamar rufen V
+encargar kommen_lassen V
+pedir_hora/cita sich_anmelden V
+reconocer untersuchen V
+aconsejar raten V
+prescribir,recetar verschreiben V
+operar operieren V
+someterse_a_una_intervención_quirúrgica operiert_werden V
+operarse_de_amígdalas sich_die_Mandeln_entfernen V
+hacer_una_radiografía röntgen V
+vendar verbinden V
+necesitar brauchen V
+tomar einnehmen V
+aplicar,untar einreiben V
+descansar sich_ausruhen V
+curar heilen V
+restablecerse sich_erholen V
+hacer_régimen/dieta eine_Diät_machen V
+adelgazar abnehmen V
+engordar zunehmen V
+empeorar sich_verschlimmern V
+morir sterben V
+enfermo krank A
+indispuesto unwohl A
+débil schwach A
+curado geheilt A
+con_buena_salud bei_guter_Gesundheit A
+en_forma fit A
+vivo lebendig A
+alérgico_a allergisch_gegen A
+anémico anämisch A
+epiléptico epileptisch A
+diabético diabetisch A
+estreñido verstopft A
+ebrio betrunken A
+doloroso schmerzhaft A
+contagioso ansteckend A
+serio ernst A
+grave schlimm A
+infectado infiziert A
+hinchado geschwollen A
+roto,fracturado gebrochen A
+dislocado verstaucht A
+embarazada schwanger A
+aborto_espontáneo die_Fehigeburt_(-en) S
+aborto_provocado die_Abtreibung_(-en) S
+menstruación die_Regel S
+compresa die_Damenbinde_(-n) S
+tampón das_Tampon_(-s) S
 enfermedad  S
 mal  S
 dolor  S
