@@ -1,7 +1,7 @@
-tener_buena_salud  A
-estar_enfermo  A
-caer_enfermo,enfermar  A
-coger,agarrar  V
+tener_buena_salud  V
+estar_enfermo  V
+caer_enfermo,enfermar  V
+contraer  V
 dolor_de_estomágo  S
 dolor_de_cabeza  S
 dolor_de_garganta  S
