@@ -80,164 +80,164 @@ aborto_provocado die_Abtreibung_(-en) S
 menstruación die_Regel S
 compresa die_Damenbinde_(-n) S
 tampón das_Tampon_(-s) S
-enfermedad  S
-mal  S
-dolor  S
-infección  S
-epidemia  S
-ataque,crisis  S
-herida  S
-esguince  S
-fractura  S
-hemorragia  S
-fiebre  S
-tos  S
-shock,choque,conmoción  S
-pulso  S
-temperatura  S
-respiración  S
-grupo_sanguíneo  S
-tesnsión_arterial,presión  S
-absceso  S
-sida  S
-angina  S
-artritis  S
-asma  S
-cistitis  S
-apendicitis  S
-bronquitis  S
-diarrea  S
-epilepsia  S
-resfriado,constipado  S
-conmoción_cerebral  S
-úlcera  S
-gripe  S
-infarto_de_miocardio  S
-fiebre_del_heno  S
-tosferina  S
-polio(mielitis)  S
-dolor_de_cabeza  S
-cáncer  S
-hernia_inguinal  S
-leucemia  S
-neumonía  S
-dolor_de_estómago,indigestión  S
-sarampión  S
-migraña  S
-paperas  S
-depresión_nerviosa  S
-viruela  S
-reuma  S
-reumtismo  S
-rubeola  S
-catarro  S
-insolación  S
-rabia  S
-tuberculosis  S
-tifus  S
-estreñimiento  S
-varicela  S
-piel  S
-quemadura  S
-corte  S
-arañazo  S
-picadura_de_insecto  S
-picor,prurito  S
-erupción  S
-acné  S
-grano  S
-varices  S
-verruga  S
-ampolla  S
-morado  S
-cicatriz  S
-quemadura_de_sol  S
-tratamiento  S
-medicina  S
-higiene  S
-salud  S
-contracepción,anticoncepción  S
-primeros_auxilios  S
-hospital  S
-clínica  S
-cura  S
-balneario  S
-horas_de_consulta  S
-sala_de_espera  S
-consultorio  S
-urgencia  S
-ambulancia  S
-camilla  S
-algodón  S
-tirita  S
-esparadrapo,tirita  S
-venda  S
-cabestrillo  S
-yeso  S
-muleta  S
-operación  S
-anestesia  S
-transfusión_sanguínea  S
-radiografía  S
-régimen,dieta  S
-volante_de_asistencia_médica  S
-mutua/seguro_médico S
-consulta  S
-cita,hora  S
-receta  S
-convalecencia  S
-recaída  S
-recuperación,restablecimiento  S
-muerta  S
-médico  S
-médica  S
-médico_de_guardia  S
-especialista  S
-enfermera  S
-enfermero  S
-cuidador  S
-enfermo  S
-paciente  S
-medicamento,fármaco  S
-farmacia  S
-antibiótico  S
-analgésico,calmante  S
-aspirina  S
-tranquilizante  S
-somnífero  S
-laxante  S
-tónico  S
-vitamina  S
-jarabe_contra_la_tos  S
-comprimido,pastilla  S
-píldora  S
-gotas  S
-antiséptico  S
-pomada  S
-inyección  S
-vacuna  S
-dentista  S
-empaste  S
-dentadura  S
-diente_postizo  S
-caries  S
-sarro  S
-discapacitado,minusválido  S
-minusválido  S
-enfermo_mental  S
-paralítico  S
-ciego,invidente  S
-tuerto  S
-daltónico  S
-miope  S
-hipermétrope  S
-duro_de_oído  s
-sordo  S
-sordomudo  S
-discapacitado/a  S
-invidente  S
-bastón  S
-silla_de_ruedas  S
-audífono  S
-gafas  S
-lentes_de_contacto,lentillas  S
+enfermedad der_Krankheit_(-en) S
+mal das_Leiden_(-) S
+dolor der_Schmerz_(-en) S
+infección die_Infektion_(-en) S
+epidemia die_Epidemie_(-n) S
+ataque,crisis der_Anfall_(-fälle) S
+herida die_Wunde_(-n) S
+esguince die_Verstauchung_(-en) S
+fractura der_Bruch_(Brüche) S
+hemorragia die_Blutung_(-en) S
+fiebre das_Fieber_(-) S
+tos der_Husten_(-) S
+shock,choque,conmoción der_Schock_(-s) S
+pulso der_Puls_(-e) S
+temperatura die_Temperatur_(-en) S
+respiración die_Atmung S
+grupo_sanguíneo die_Blutgruppe_(-n) S
+tesnsión_arterial,presión der_Blutdruck S
+absceso der_Abszess_(-e) S
+sida Aids S
+angina die_Angina S
+artritis die_Arthritis S
+asma das_Asthma S
+cistitis die_Blasenentzündung_(-en) S
+apendicitis die_Blinddarmentzündung_(-en) S
+bronquitis die_Bronchitis S
+diarrea der_Durchfall S
+epilepsia die_Epilepsie S
+resfriado,constipado die_Erkältung_(-en) S
+conmoción_cerebral die_Gehirnerschütterung_(-en) S
+úlcera das_Geschwür_(-e) S
+gripe die_Grippe S
+infarto_de_miocardio der_Herzinfarkt_(-e) S
+fiebre_del_heno das_Heufieber S
+tosferina der_Keuchhusten S
+polio(mielitis) die_Kinderlähmung S
+dolor_de_cabeza das_Kopfweh S
+cáncer der_Krebs S
+hernia_inguinal das_Leistenbruch_(-brüche) S
+leucemia die_Leukämie S
+neumonía die_Lungenentzündung_(-en) S
+dolor_de_estómago,indigestión die_Magenverstimmung_(-en) S
+sarampión die_Masern S
+migraña die_Migräne S
+paperas der_Mumps S
+depresión_nerviosa der_Nervenzusammenbruch S
+viruela die_Pocken S
+reuma das_Rheuma S
+reumtismo der_Rheumatismus S
+rubeola die_Töteln S
+catarro der_Schnupfen S
+insolación der_Sonnenstich S
+rabia die_Tollwut S
+tuberculosis die_Tuberkulose S
+tifus der_Typhus S
+estreñimiento die_Verstopfung_(-en) S
+varicela die_Windpocken S
+piel die_Haut_(Häute) S
+quemadura die_Verbrennung_(-en) S
+corte die_Schnittverletzung_(-en) S
+arañazo der_Kratzer_(-) S
+picadura_de_insecto der_Insektenstich_(-e) S
+picor,prurito das_Jucken S
+erupción der_Ausschlag_(-schläge) S
+acné die_Akne_(-n) S
+grano der_Pickel_(-) S
+varices die_Krampfadern S
+verruga die_Warze_(-n) S
+ampolla die_Blase_(-n) S
+morado ein_blauer_Fleck_(-e) S
+cicatriz die_Narbe_(-n) S
+quemadura_de_sol der_Sonnenbrand_(-brände) S
+tratamiento die_Behandlung_(-en) S
+medicina die_Medizin S
+higiene die_Hygiene S
+salud die_Gesundheit S
+contracepción,anticoncepción die_Empfängnisverhütung S
+primeros_auxilios die_erste_Hilfe S
+hospital das_Krankenhaus_(-häuser) S
+clínica die_Klinik_(-en) S
+cura die_Kur_(-en) S
+balneario der_Kurort S
+horas_de_consulta die_Sprechstunde_(-n) S
+sala_de_espera das_Wartezimmer_(-) S
+consultorio das_Sprechzimmer_(-) S
+urgencia der_Notfall_(-fälle) S
+ambulancia der_Krankenwagen_(-) S
+camilla die_Trage_(-n) S
+algodón die_Watte S
+tirita das_Heftpflaster_(-) S
+esparadrapo,tirita das_Heftpflaster_(-) S
+venda der_Verband_(Verbände) S
+cabestrillo die_Armbinde_(-n) S
+yeso der_Gipsverband_(-verbände) S
+muleta die_Krücke_(-n) S
+operación die_Operation_(-en) S
+anestesia die_Narkose_(-n) S
+transfusión_sanguínea die_Bluttransfusion_(-en) S
+radiografía die_Röntgenaufnahme_(-n) S
+régimen,dieta die_Diät S
+volante_de_asistencia_médica der_Krankenschein_(-e) S
+mutua/seguro_médico die_Krankenkasse_(-n) S
+consulta die_Beratung_(-en) S
+cita,hora der_Termin_(-e) S
+receta das_Rezept_(-e) S
+convalecencia die_Genesung S
+recaída der_Rückfall_(-fälle) S
+recuperación,restablecimiento die_Erholung S
+muerta der_Tod S
+médico die_Arzt_(Ärzt) S
+médica die_Ärztin S
+médico_de_guardia der_Dienst_habende_Arzt_(Ärzte) S
+especialista der_Spezialist_(-en) S
+enfermera die_Krankenschwester_(-n) S
+enfermero der_Krankenpfleger_(-) S
+cuidador der_Pfleger_(-) S
+enfermo der/die_Kranke_(-n) S
+paciente der/die_Patient(in)_(-en) S
+medicamento,fármaco das_Medikament_(-e) S
+farmacia die_Apotheke_(-n) S
+antibiótico das_Antibiotikum_(-biotika) S
+analgésico,calmante das_Schmerzmittel_(-) S
+aspirina die_Kopfschmerztablette_(-n) S
+tranquilizante das_Beruhingungsmittel_(-) S
+somnífero die_Schlaftablette_(-n) S
+laxante das_Abführmittel_(-) S
+tónico das_Stärkungsmittel_(-) S
+vitamina das_Vitamin_(-e) S
+jarabe_contra_la_tos der_Hustensaft_(-säfte) S
+comprimido,pastilla die_Tablette_(-n) S
+píldora die_Pille_(-n) S
+gotas die_Tropfen S
+antiséptico das_Antiseptikum_(-septika) S
+pomada die_Salbe_(-n) S
+inyección die_Spritze_(-n) S
+vacuna die_Impfung_(-en) S
+dentista der_Zahnarzt_(-ärzte) S
+empaste die_Plombe_(-n) S
+dentadura das_Gebiss_(-e) S
+diente_postizo der_Zahnersatz S
+caries die_Karies S
+sarro der_Zahnbelag S
+discapacitado,minusválido behindert A
+minusválido körperbehindert A
+enfermo_mental geistig_behindert A
+paralítico gelähmt A
+ciego,invidente blind A
+tuerto einäugig A
+daltónico farbenblind A
+miope kurzsichtig A
+hipermétrope weitsichtig A
+duro_de_oído schwerhörig A
+sordo taub A
+sordomudo taubstumm A
+discapacitado/a der/die_Behinderte_(-n) S
+invidente der/die_Blinde_(-n) S
+bastón der_Stock_(Stöcke) S
+silla_de_ruedas der_Rollstuhl_(-stühle) S
+audífono das_Hörgerät_(-e) S
+gafas die_Brille_(-n) S
+lentes_de_contacto,lentillas die_Kontaklinsen S
